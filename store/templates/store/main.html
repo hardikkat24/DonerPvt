@@ -71,7 +71,7 @@
 
 	<header id="header">
 		<div class="container">
-			<a href="{% url 'store' %}" id="logo" title="Doner Diamonds">Doner Diamonds</a>
+			<a href="{% url 'store' %}" id="logo" title="Doner Diamonds" style="background: url({% static '/images/logo.png'%}) no-repeat;">Doner Diamonds</a>
 			<div class="right-links">
 				<ul>
 					<li><a href="{% url 'cart' %}"><span class="ico-products"></span>{{cartItems}}</a></li>
