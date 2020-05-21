@@ -1,0 +1,68 @@
+{% extends 'store/main.html' %}
+{% block content %}
+	<div id="body">
+		<div class="container">
+			<div id="content" class="full">
+				<div class="product">
+					<div class="image">
+						<img src="{{ product.imageURL }}" alt="">
+					</div>
+					<div class="details">
+						<h1>{{ product.lot_no }}</h1>
+						<h4>${{ product.price }}</h4>
+						<div class="entry">
+							
+							<div class="tabs">
+								<div class="nav">
+									<ul>
+										<li class = "active"><a href="#spec">Specification</a></li>
+										<li><a href="#ret">Certificate</a></li>
+										<li><a href="#vid">Video</a></li>
+									</ul>
+								</div>
+								<div class="tab-content active" id="spec">
+									<p><b>Shape: </b>{{ product.get_shape_display }}</p>
+									<p><b>Clarity: </b>{{ product.get_clarity_display }}</p>
+									<p><b>Color: </b>{{ product.get_color_display }}</p>
+									<p><b>Carat: </b>{{ product.carat}}</p>
+									<p><b>Stone: </b>{{ product.stone}}</p>
+									<p><b>Measurement: </b>{{ product.measurement }}</p>
+									<p><b>Dept: </b>{{ product.dept }}</p>
+									<p><b>TBL: </b>{{ product.tbl }}</p>
+									<p><b>Cut: </b>{{ product.cut or None}}</p>
+									<p><b>Pol: </b>{{ product.Pol }}</p>
+									<p><b>Sym: </b>{{ product.sym }}</p>
+									<p><b>FL: </b>{{ product.fl }}</p>
+									<p><b>CUL: </b>{{ product.cul }}</p>
+									<p><b>Girdle: </b>{{ product.girdle }}</p>
+									<p><b>Lab: </b>{{ product.lab }}</p>
+									<p><b>Certificate No.: </b>{{ product.certno }}</p>
+									<p><b>Rap: </b>{{ product.rap }}</p>
+								</div>
+								<div class="tab-content" id="ret">
+									
+										<img src="{{ product.certificateURL }}" alt="">
+									
+								</div>
+								<div class="tab-content" id="vid">
+									
+										<img src="{{ product.video }}" alt="">
+									
+								</div>
+							</div>
+						</div>
+					
+						<div class="actions">
+							<form method="POST">
+								{% csrf_token %}
+								<button type="submit" class="btn-grey">Add to Cart</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- / content -->
+		</div>
+		<!-- / container -->
+	</div>
+	<!-- / body -->
+{% endblock content %}

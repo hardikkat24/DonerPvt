@@ -1,0 +1,175 @@
+{% load static %}
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Doner Diamonds</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<link rel="stylesheet" media="all" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" media="all" href="{% static 'css/style2.css' %}">
+
+	<script type="text/javascript">
+		var user = '{{request.user}}'
+
+		function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+
+		function getCookie(name) {
+		    // Split cookie string and get all individual name=value pairs in an array
+		    var cookieArr = document.cookie.split(";");
+
+		    // Loop through the array elements
+		    for(var i = 0; i < cookieArr.length; i++) {
+		        var cookiePair = cookieArr[i].split("=");
+
+		        /* Removing whitespace at the beginning of the cookie name
+		        and compare it with the given string */
+		        if(name == cookiePair[0].trim()) {
+		            // Decode the cookie value and return
+		            return decodeURIComponent(cookiePair[1]);
+		        }
+		    }
+
+		    // Return null if not found
+		    return null;
+		}
+		var cart = JSON.parse(getCookie('cart'))
+
+		if (cart == undefined){
+			cart = {}
+			console.log('Cart Created!', cart)
+			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+		console.log('Cart:', cart)
+	
+	</script>
+
+</head>
+
+<body>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+	<header id="header">
+		<div class="container">
+			<a href="{% url 'store' %}" id="logo" title="Doner Diamonds">Doner Diamonds</a>
+			<div class="right-links">
+				<ul>
+					<li><a href="{% url 'cart' %}"><span class="ico-products"></span>{{cartItems}}</a></li>
+					<li><span class="ico-account"></span>   
+					{% if request.user.is_authenticated %}
+					<a  class="nav">Welcome, {{request.user}}</a></li>
+					<li><a href="{% url 'logout' %}?next=/"><span class="ico-signout"></span>Sign out</a></li>
+					{% else %}
+					<a href="{% url 'login' %}?" class="ico-account">Login</a></li>
+					{% endif %}
+					
+				</ul>
+			</div>
+		</div>
+		<!-- / container -->
+	</header>
+	<!-- / header -->
+
+	<nav id="menu">
+		<div class="container">
+			<div class="trigger"></div>
+			<ul>
+				<li><a href="{% url 'store' %}">Home</a></li>
+				<li><a href="{% url 'search' %}">Search Diamonds</a></li>
+				<li><a href="{% url 'about' %}">About Us</a></li>
+			</ul>
+		</div>
+		<!-- / container -->
+	</nav>
+	<!-- / navigation -->
+            <br>
+            {% block content %}
+
+
+            {% endblock content %}
+
+
+
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+	<footer id="footer">
+		<div class="container">
+			<div class="cols">
+				<div class="col">
+					<h3>Frequently Asked Questions</h3>
+					<ul>
+						<li><a href="#">Fusce eget dolor adipiscing </a></li>
+						<li><a href="#">Posuere nisl eu venenatis gravida</a></li>
+						<li><a href="#">Morbi dictum ligula mattis</a></li>
+						<li><a href="#">Etiam diam vel dolor luctus dapibus</a></li>
+						<li><a href="#">Vestibulum ultrices magna </a></li>
+					</ul>
+				</div>
+				<div class="col media">
+					<h3>Social media</h3>
+					<ul class="social">
+						<li><a href="#"><span class="ico ico-fb"></span>Facebook</a></li>
+						<li><a href="#"><span class="ico ico-tw"></span>Twitter</a></li>
+						<li><a href="#"><span class="ico ico-gp"></span>Google+</a></li>
+						<li><a href="#"><span class="ico ico-pi"></span>Pinterest</a></li>
+					</ul>
+				</div>
+				<div class="col contact">
+					<h3>Contact us</h3>
+					<p>Doner Diamonds INC.<br>54233 Avenue Street<br>New York</p>
+					<p><span class="ico ico-em"></span><a href="#">contact@donerdiamonds.com</a></p>
+					<p><span class="ico ico-ph"></span>(590) 423 446 924</p>
+				</div>
+				<div class="col newsletter">
+					<h3>Join our newsletter</h3>
+					<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium.</p>
+					<form action="#">
+						<input type="text" placeholder="Your email address...">
+						<button type="submit"></button>
+					</form>
+				</div>
+			</div>
+			<p class="copy">Copyright 2020 Doner Diamonds. All rights reserved.</p>
+		</div>
+		<!-- / container -->
+	</footer>
+	<!-- / footer -->
+
+
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script>window.jQuery || document.write("<script src='js/jquery-1.11.1.min.js'>\x3C/script>")</script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/plugins.js' %}"></script>
+	<script type="text/javascript">
+		var checkboxes = document.querySelectorAll("input[type = 'checkbox']");
+		for (var i = 0; i < checkboxes.length; i++){
+			checkboxes[i].style.left = 0;
+		}
+	</script>
+	<script type="text/javascript">
+		$("#menu .trigger").click(function() {
+		$(this).toggleClass("active").next().toggleClass("active")
+	});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+{% extends 'store/main.html' %}
+{% block content %}
+{% load static %}
+	<div id="breadcrumbs">
+		<div class="container">
+			<ul>
+				<li><a href="{% url 'store' %}">Home</a></li>
+				<li>Product results</li>
+			</ul>
+		</div>
+		<!-- / container -->
+	</div>
+	<!-- / body -->
+
+	<div id="body">
+		<div class="container">
+			<div class="pagination">
+				{% if products.has_other_pages %}
+				<ul class = "pagination">
+					{% if products.has_previous %}
+						<li><a href="?page={{ products.previous_page_number }}"><span class="ico-prev"></span></a></li>
+					{% endif %}
+					{% for i in products.paginator.page_range %}
+						{% if products.number == i %}
+							<li class="active"><a href="#">{{ i }}</a></li>
+						{% else %}
+							<li><a href="?page={{ i }}">{{ i }}</a></li>
+						{% endif %}
+					{% endfor %}
+					{% if products.has_next %}
+						<li><a href="?page={{ products.next_page_number }}"><span class="ico-next"></span></a></li>
+					{% endif %}
+				</ul>
+				{% endif %}
+			</div>
+			<div class="products-wrap">
+				<aside id="sidebar">
+					<form method="GET" id = "filter_form">
+						{{ filter.form.shape.label_tag }}
+						{% for choice in filter.form.shape %}
+							{{ choice.tag }} 
+							<img src = "{% static choice.choice_label %}" style = "height:  100px;">
+							<br>
+						{% endfor %}
+						<br>
+						{{ filter.form.color.label_tag }}
+						{% for choice in filter.form.color %}
+							{{ choice.tag }} 
+							{{ choice.choice_label }}
+							<br>
+						{% endfor %}
+						<br>
+						{{ filter.form.clarity.label_tag }}
+						{% for choice in filter.form.clarity %}
+							{{ choice.tag }} 
+							{{ choice.choice_label }}
+							<br>
+						{% endfor %}
+						<br>
+						{{ filter.form.lab.label_tag }}
+						{% for choice in filter.form.lab %}
+							{{ choice.tag }} 
+							{{ choice.choice_label }}
+							<br>
+						{% endfor %}
+						<br>
+						{{ filter.form.price_gt.label_tag }}
+						{{ filter.form.price_gt }}
+						<br>
+						{{ filter.form.price_lt.label_tag }}
+						{{ filter.form.price_lt }}
+						<div style="clear:both;"></div>
+						<div class="widget">
+							<h3>Price range:</h3>
+							<fieldset>
+								<div id="price-range"></div>
+							</fieldset>
+						</div>
+						<div style="clear:both;"></div>
+						<br>
+						{{ filter.form.carat_gt.label_tag }}
+						{{ filter.form.carat_gt }}
+						
+						{{ filter.form.carat_lt.label_tag }}
+						{{ filter.form.carat_lt }}
+						
+						<button type = "submit" class="btn-add">Search</button>
+					</form>
+				</aside>
+				<div>
+					<section >
+						<table class = "ptable">
+						<tr>
+							<th>Lot_no</th>
+							<th>Shape</th>
+							<th>Carat</th>
+							<th>Stone</th>
+							<th>Color</th>
+							<th>Clarity</th>
+							<th>Price</th>
+							<th>View</th>
+							<th>Add to Cart</th>
+						</tr>
+					{% for product in products %}
+						<tr>
+							<td>{{product.lot_no}}</td>
+							<td>{{product.shape}}</td>
+							<td>{{product.carat}}</td>
+							<td>{{product.stone}}</td>
+							<td>{{product.color}}</td>
+							<td>{{product.clarity}}</td>
+							<td>{{product.price}}</td>
+							<td>
+							<a href = "{% url 'view' product.pk %}">View</a>
+							</td>
+							<td>
+							<a href = "{% url 'add' product.pk %}">Add to cart</a>
+							</td>
+						</tr>
+					{% endfor %}
+						</table>
+					</section>
+				</div>
+				<!-- / content -->
+			</div>
+			<div class="pagination">
+				{% if products.has_other_pages %}
+				<ul class = "pagination">
+					{% if products.has_previous %}
+						<li><a href="?page={{ products.previous_page_number }}"><span class="ico-prev"></span></a></li>
+					{% endif %}
+					{% for i in products.paginator.page_range %}
+						{% if products.number == i %}
+							<li class="active"><a href="#">{{ i }}</a></li>
+						{% else %}
+							<li><a href="?page={{ i }}">{{ i }}</a></li>
+						{% endif %}
+					{% endfor %}
+					{% if products.has_next %}
+						<li><a href="?page={{ products.next_page_number }}"><span class="ico-next"></span></a></li>
+					{% endif %}
+				</ul>
+				{% endif %}
+			</div>
+		</div>
+		<!-- / container -->
+	</div>
+	<!-- / body -->
+	
+{% endblock content %}
+
+
+<div class="widget">
+<h3>Products per page:</h3>
+<fieldset>
+	<input checked type="checkbox">
+	<label>8</label>
+	<input type="checkbox">
+	<label>16</label>
+	<input type="checkbox">
+	<label>32</label>
+</fieldset>
+</div>
+<div class="widget">
+<h3>Sort by:</h3>
+<fieldset>
+	<input checked type="checkbox">
+	<label>Popularity</label>
+	<input type="checkbox">
+	<label>Date</label>
+	<input type="checkbox">
+	<label>Price</label>
+</fieldset>
+</div>
+<div class="widget">
+<h3>Condition:</h3>
+<fieldset>
+	<input checked type="checkbox">
+	<label>New</label>
+	<input type="checkbox">
+	<label>Used</label>
+</fieldset>
+</div>
+<div class="widget">
+<h3>Price range:</h3>
+<fieldset>
+	<div id="price-range"></div>
+</fieldset>
+</div>
+
+
+<div id="content">
+					<section class="products">
+					{% for product in products %}
+						<article>
+							<a href="product.html"><img src="{{product.imageURL}}" alt=""></a>
+							<h3><a href="product.html">{{product.lot_no}}</a></h3>
+							<h4><a href="product.html">${{product.price}}</a></h4>
+							<a data-product="{{product.id}}" data-action="add" class="btn-add" href = "{% url 'add2' product.pk %}">Add to cart</a>
+						</article>
+					{% endfor %}
+					</section>
+				</div>

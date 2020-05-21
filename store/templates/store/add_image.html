@@ -1,0 +1,59 @@
+{% extends 'store/main.html' %}
+{% block content %}
+	<div id="breadcrumbs">
+		<div class="container">
+			<ul>
+				<li><a href="{% url 'store' %}">Home</a></li>
+				<li>Product results</li>
+			</ul>
+		</div>
+		<!-- / container -->
+	</div>
+	<!-- / body -->
+
+	<div id="body">
+		<div class="container">
+			
+			<div class="products-wrap">
+				
+				<div>
+					<section >
+						<table class = "ptable">
+						<tr>
+							<th>Lot_no</th>
+							<th>Shape</th>
+							<th>Carat</th>
+							<th>Stone</th>
+							<th>Color</th>
+							<th>Clarity</th>
+							<th>Price</th>
+							<th>Update</th>
+						</tr>
+					{% for product in products %}
+						{% if not product.image or not product.certificate %}
+						<tr>
+							<td>{{product.lot_no}}</td>
+							<td>{{product.shape}}</td>
+							<td>{{product.carat}}</td>
+							<td>{{product.stone}}</td>
+							<td>{{product.color}}</td>
+							<td>{{product.clarity}}</td>
+							<td>{{product.price}}</td>
+							<td>
+							<a href = "{% url 'add_image_update' product.pk %}">Update</a>
+							</td>
+						</tr>
+						{% endif %}
+					{% endfor %}
+						</table>
+					</section>
+				</div>
+				<!-- / content -->
+			</div>
+			
+		</div>
+		<!-- / container -->
+	</div>
+	<!-- / body -->
+	
+{% endblock content %}

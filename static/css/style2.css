@@ -1,0 +1,61 @@
+#filter_form .btn-add {
+	height: 20px;
+	background-color: #cecece;
+	display: block;
+	color: #656567;
+	font-family: "Novecentowide";
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 20px;
+	margin: 20px 32px;
+}
+
+#filter_form .btn-add:hover {
+	background: #656567;
+	color: #fff;
+	text-decoration: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.ptable th, .ptable td{
+  border-bottom: 1px solid #ddd;
+}
+
+.ptable tr{
+	margin: 5px;
+	padding: 10px;
+}
+
+.ptable td, .ptable th{
+	padding: 10px;
+}
+
+.ptable th{
+	font-weight: bold;
+}
+
+#desc b {
+	font-weight: bold;
+}
+
+#spec b{
+	font-weight: bold;
+}
+
+
+
+.messages{
+	text-align: center;
+}
+
+.messages .info{
+	margin-right: 0 auto;
+	font-weight: bold;
+}
+
+.entry .tab-content img{
+	width: 100%;
+}
