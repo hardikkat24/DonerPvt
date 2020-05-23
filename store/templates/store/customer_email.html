@@ -62,6 +62,7 @@
 									</tr>
 									<tr>
 										<th style="font-size:9pt" valign="middle">Sr No.</th>
+										<th style="font-size:9pt" valign="middle">Quantity</th>
 										<th style="font-size:9pt" valign="middle">Stock No.</th>
 										<th style="font-size:9pt" valign="middle">Shape</th>
 										<th style="font-size:9pt" valign="middle">Carat</th>
@@ -99,6 +100,7 @@
 									{% for orderitem in order.orderitem_set.all %}
 									<tr>
 										<td style="font-size:9pt" valign="middle" align="center">{{ forloop.counter }}</td>
+										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.quantity }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.lot_no }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.get_shape_display }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.carat }}</td>
@@ -107,8 +109,8 @@
 										<td style="font-size:9pt" valign="middle" align="center">WH(don't know)</td>
 										<td style="font-size:9pt" valign="middle" align="center">4100(don't know)</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.rap }}</td>
-										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.price }}</td>
-										<td style="font-size:9pt" valign="middle" align="center">1051.57(two different prices)</td>
+										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.price_ct }}</td>
+										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.price }} * {{ orderitem.quantity }} </td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.cut }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.pol }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.sym }}</td>

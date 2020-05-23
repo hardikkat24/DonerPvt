@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import ShippingAddress, Customer, Product
+from .models import ShippingAddress, Customer, Product, OrderItem
 
 
 class LoginForm(forms.Form):
@@ -86,3 +86,7 @@ class ProductUpdateForm(forms.ModelForm):
   class Meta:
     model = Product
     exclude = ['', ]
+
+
+class QuantityForm(forms.Form):
+  quantity = forms.IntegerField()

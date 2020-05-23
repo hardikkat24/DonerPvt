@@ -108,8 +108,8 @@ def sendMail(request, order):
 	totalcarat = grandtotal = 0
 
 	for orderitem in order.orderitem_set.all():
-		totalcarat += orderitem.product.carat
-		grandtotal += orderitem.product.price
+		totalcarat += orderitem.product.carat*orderitem.quantity
+		grandtotal += orderitem.product.price*orderitem.quantity
 
 	grandtotal += SHIPPING_CHARGES
 

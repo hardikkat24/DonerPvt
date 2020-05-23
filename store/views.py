@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import LoginForm, SignUpForm, ShippingAddressForm, CustomerSignUpForm, ProductUpdateForm
+from .forms import LoginForm, SignUpForm, ShippingAddressForm, CustomerSignUpForm, ProductUpdateForm, QuantityForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .filters import ProductFilter
 from django.contrib import messages
@@ -50,19 +50,30 @@ def remove(request, pk):
 def view(request, pk):
 	product = Product.objects.filter(lot_no__exact = pk).first()
 	if request.method == "POST":
-		order, created = Order.objects.get_or_create(customer = request.user.customer, complete = False)
-		orderitem, orderitemcreated = OrderItem.objects.get_or_create(product = product, order = order)
-		if not orderitemcreated:
-			messages.info(request, 'Item already in cart!')
+		form = QuantityForm(request.POST)
+		if form.is_valid():
+			quantity = form.cleaned_data.get('quantity')
+			order, created = Order.objects.get_or_create(customer = request.user.customer, complete = False)
+			orderitem, orderitemcreated = OrderItem.objects.get_or_create(product = product, order = order)
+		
+			orderitem.quantity = quantity
+			if orderitem.quantity > orderitem.product.stone:
+				orderitem.quantity = orderitem.product.stone
+				messages.info(request, 'Only '+ str(orderitem.product.stone) + "piece(s) left !" )
+
+			orderitem.save()
+			
 
 
 	data = cartData(request)
 
 	cartItems = data['cartItems']
+	form = QuantityForm()
 
 	context = {
 	'product': product,
 	'cartItems':cartItems,
+	'form': form,
 	}
 	return render(request, "store/product.html", context)
 
@@ -92,6 +103,7 @@ def checkout(request):
 		if form.is_valid():
 			ins = form.save(commit = False)
 			order1 = Order.objects.get(customer = request.user.customer, complete = False)
+
 			if order1.orderitem_set.count() > 0:
 				order1.complete = True
 				order1.save()
@@ -99,8 +111,11 @@ def checkout(request):
 				ins.customer = request.user.customer
 				ins.save()
 				sendMail(request, order1)
+
 				for orderitem in order.orderitem_set.all():
-					orderitem.product.ordered = True
+					orderitem.product.stone -= orderitem.quantity
+					if orderitem.product.stone <= 0:
+						orderitem.product.ordered = True
 					orderitem.product.save()
 				return redirect('success')
 			else:

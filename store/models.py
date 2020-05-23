@@ -83,7 +83,7 @@ class Product(models.Model):
 	lot_no = models.CharField(primary_key = True, max_length = 30)
 	shape = models.CharField(max_length = 20, choices = SHAPE_CHOICES, default = "OTHER")
 	carat = models.FloatField(null = True, blank = True)
-	stone = models.IntegerField(null = True, blank = True)
+	stone = models.IntegerField(null = True, blank = True) # Quantity
 	color = models.CharField(max_length = 25, choices = COLOR_CHOICES, default = "D")
 	clarity = models.CharField(max_length = 25, choices = CLARITY_CHOICES, default = "FL")
 	measurement = models.CharField(max_length = 50, null = True, blank = True)
@@ -110,6 +110,10 @@ class Product(models.Model):
 	def __str__(self):
 		return str(self.lot_no)
 
+	@property
+	def price_ct(self):
+		return self.price / self.carat
+	
 
 	@property
 	def imageURL(self):
@@ -130,6 +134,8 @@ class Product(models.Model):
 	def save(self, *args, **kwargs):
 		if self.shape not in x:
 			self.shape = "OTHER"
+		if self.stone > 0:
+			self.ordered = False
 		super(Product, self).save(*args, **kwargs) 
 	
 

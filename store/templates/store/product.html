@@ -29,7 +29,7 @@
 									<p><b>Measurement: </b>{{ product.measurement }}</p>
 									<p><b>Dept: </b>{{ product.dept }}</p>
 									<p><b>TBL: </b>{{ product.tbl }}</p>
-									<p><b>Cut: </b>{{ product.cut or None}}</p>
+									<p><b>Cut: </b>{{ product.cut}}</p>
 									<p><b>Pol: </b>{{ product.Pol }}</p>
 									<p><b>Sym: </b>{{ product.sym }}</p>
 									<p><b>FL: </b>{{ product.fl }}</p>
@@ -55,7 +55,9 @@
 						<div class="actions">
 							<form method="POST">
 								{% csrf_token %}
+								{{ form.as_p }}
 								<button type="submit" class="btn-grey">Add to Cart</button>
+							</form>
 						</div>
 					</div>
 				</div>
