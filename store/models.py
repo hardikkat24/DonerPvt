@@ -15,7 +15,25 @@ SHAPE_CHOICES = [
 	('PS', 'Pear Shape'),#
 	('RA', 'Radiant'),#
 	('RD', 'Round'),#
-	
+]
+
+PSEUDO_SHAPE_CHOICES = [
+	('AS', 'Asscher'),#
+	('BU', 'BU1'),
+	('CU', 'Cushion'),#
+	('EC', 'Emerald'),#
+	('EU', 'EU1'),
+	('HS', 'Heart'),#
+	('MQ', 'Marquise'),#
+	('OV', 'Oval'),#
+	('OM', 'OM1'),
+	('PR', 'Princess'),#
+	('PS', 'Pear Shape'),#
+	('RA', 'Radiant'),#
+	('RD', 'Round'),#
+	('STB', 'STB1'),
+	('TB', 'TB1'),
+	('TR', 'TR1'),
 ]
 
 x = [p[0] for p in SHAPE_CHOICES]
@@ -76,12 +94,12 @@ def create_customer(sender, instance, created, **kwargs):
 post_save.connect(create_customer, sender = User)
 """
 
-
 class Product(models.Model):
 
 	name = models.CharField(max_length=200, null = True, blank = True, default = "-")
 	lot_no = models.CharField(primary_key = True, max_length = 30)
-	shape = models.CharField(max_length = 20, choices = SHAPE_CHOICES, default = "OTHER")
+	shape = models.CharField(max_length = 20, choices = SHAPE_CHOICES)
+	pseudo_shape = models.CharField(max_length = 20, choices = PSEUDO_SHAPE_CHOICES, default = "OTHER")
 	carat = models.FloatField(null = True, blank = True)
 	stone = models.IntegerField(null = True, blank = True) # Quantity
 	color = models.CharField(max_length = 25, choices = COLOR_CHOICES, default = "D")
@@ -132,6 +150,7 @@ class Product(models.Model):
 		return url
 
 	def save(self, *args, **kwargs):
+		self.pseudo_shape = self.shape
 		if self.shape not in x:
 			self.shape = "OTHER"
 		if self.stone > 0:

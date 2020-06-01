@@ -20,6 +20,10 @@
     transition: all 0.2s ease-in-out;
 }
 
+.ptable td{
+	font-size: 20px;
+}
+
 .ptable th, .ptable td{
   border-bottom: 1px solid #ddd;
 }
@@ -30,7 +34,7 @@
 }
 
 .ptable td, .ptable th{
-	padding: 10px;
+	padding: 1px;
 }
 
 .ptable th{
@@ -59,3 +63,4 @@
 .entry .tab-content img{
 	width: 100%;
 }
+

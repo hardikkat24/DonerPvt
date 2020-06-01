@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,7 +28,7 @@ else:
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ['donerdiamonds.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -153,5 +152,3 @@ EMAIL_PORT = 587
 # If email gives an error, make sure to allow less secure apps to send emails
 # For this, use the following link:
 # https://www.google.com/settings/security/lesssecureapps
-
-django_heroku.settings(locals())

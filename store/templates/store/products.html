@@ -13,7 +13,7 @@
 	<!-- / body -->
 
 	<div id="body">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="pagination">
 				{% if products.has_other_pages %}
 				<ul class = "pagination">
@@ -89,7 +89,7 @@
 				</aside>
 				<div>
 					<section >
-						<table class = "ptable">
+						<table class = "ptable" style="font-size: 12px">
 						<tr>
 							<th>Lot_no</th>
 							<th>Shape</th>
@@ -97,6 +97,17 @@
 							<th>Stone</th>
 							<th>Color</th>
 							<th>Clarity</th>
+							<th>Measurement</th>
+							<th>Dept</th>
+							<th>Tbl</th>
+							<th>Cut</th>
+							<th>Pol</th>
+							<th>Sym</th>
+							<th>Fl</th>
+							<th>Cul</th>
+							<th>Girdle</th>
+							<th>Lab</th>
+							<th>Rap</th>
 							<th>Price</th>
 							<th>View</th>
 							<th>Add to Cart</th>
@@ -104,12 +115,23 @@
 					{% for product in products %}
 						<tr>
 							<td>{{product.lot_no}}</td>
-							<td>{{product.shape}}</td>
+							<td>{{product.get_pseudo_shape_display }}</td>
 							<td>{{product.carat}}</td>
 							<td>{{product.stone}}</td>
 							<td>{{product.color}}</td>
 							<td>{{product.clarity}}</td>
-							<td>{{product.price}}</td>
+							<td>{{product.measurement }}</td>
+							<td>{{product.dept }}</td>
+							<td>{{product.tbl }}</td>
+							<td>{{product.cut }}</td>
+							<td>{{product.pol }}</td>
+							<td>{{product.sym }}</td>
+							<td>{{product.fl }}</td>
+							<td>{{product.cul }}</td>
+							<td>{{product.girdle }}</td>
+							<td>{{product.lab }}</td>
+							<td>{{product.rap }}</td>
+							<td>{{product.price }}</td>
 							<td>
 							<a href = "{% url 'view' product.pk %}">View</a>
 							</td>

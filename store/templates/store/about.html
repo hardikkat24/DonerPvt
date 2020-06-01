@@ -1,21 +1,48 @@
 {% extends 'store/main.html' %}
 {% block content %}
+	<script>
+	$(document).ready(function(){
+	  // Add smooth scrolling to all links
+	  $("a").on('click', function(event) {
+
+	    // Make sure this.hash has a value before overriding default behavior
+	    if (this.hash !== "") {
+	      // Prevent default anchor click behavior
+	      event.preventDefault();
+
+	      // Store hash
+	      var hash = this.hash;
+
+	      // Using jQuery's animate() method to add smooth page scroll
+	      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+	      $('html, body').animate({
+	        scrollTop: $(hash).offset().top
+	      }, 800, function(){
+	   
+	        // Add hash (#) to URL when done scrolling (default click behavior)
+	        window.location.hash = hash;
+	      });
+	    } // End if
+	  });
+	});
+	</script>
 	<div id="body">
 		<div class="container">
 			<div id="content" class="full">
-				<h1>We provide amazing diamonds</h1>
 				<div class="entry">
-					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-					<h2>Duis aute irure dolor in reprehenderit </h2>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur:</p>
-					<ol>
-						<li>Phasellus vitae enim non quam adipiscing suscipit nec quis mauris.</li>
-						<li>Vivamus feugiat erat vel pellentesque luctus.</li>
-						<li>Nullam ac urna facilisis, fringilla arcu in, sodales velit.</li>
-						<li>Nam tempus nisi ornare urna mollis cursus.</li>
-					</ol>
-					<h2>dignissimos ducimus blanditiis praesentium</h2>
-					<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio <a href="#"><strong>nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit</strong></a> quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.</p>
+					<h2>WHO WE ARE</h2>
+					<p style="font-size: 20px;">Doner Diamonds is a direct importer of quality loose diamonds longstanding relationship with established global sources of quality goods allows it to provide its clientele with exceedingly competitive margins.</p>
+					<p style="font-size: 20px;">Doner Diamonds primarily supplies the wholesale industry with certified (GIA & EGL) and Non-certified (commercial) stones from its own extensive inventory of larger sized loose diamonds.</p>
+					<p style="font-size: 20px;">Doner Diamonds also offers quality diamond jewelry and custom-designed pieces to the retail public. For more information about one of our finished pieces or to inquire about our own custom design, <a href = "#footer">Contact Us</a> directly to make an appointment.</p>
+					<p style="font-size: 20px;">We have sold over 30,000 diamonds through our wholesale business and now are offering the same wholesale prices to you, the retailer. Feel free to contact us with any questions you may have. We are here to make your diamond purchase the most cost efficient and most pleasant experience you can have. </p>
+					<h2>HOW WE GOT HERE</h2>
+					<p style="font-size: 20px;">Doner Diamonds was first started by the Mr Ohannes Donikian when he brought his family and Diamond business over to America from Turkey in 1979. Mr Ohannes Donikian established themselves in the industry by keeping to his principles of quality, service, and expedience in everything Doner Diamonds does. Through this practice they grew the business steadily over the decades until  Arto & Kevin Donikian took over the business in the 1980's. building on everything their father bestowed upon and taught them, redefined the diamond market for consumers by being one of the few to exclusively offer and sell  (GIA & EGL) and Non-certified diamonds.</p>
+					<p style="font-size: 20px;">Since then, Doner Diamonds has been an enduring strong presence in the wholesale diamond industry. Doner Diamonds is recognized as a highly experienced and professional corporation whose reputation and expertise distinguish it from others in the trade.</p>
+					<p style="font-size: 20px;">Doner Diamonds has distinguished itself within the Diamond and Jewelry Market by providing a superior level of customer service and value to all of it's customers over the decades. We are always looking forward to providing you with exceptional guidance and design assistance in making any beautiful piece of jewelry and especially in designing your custom Ultimate Engagement Ring, making it truly that special symbol of your lifelong bond.</p>
+					<p style="font-size: 20px;">We are not limited in the number of carats we can buy. We buy Diamonds of all kinds including Melee and other designer jewelry as well.</p>
+					<p style="font-size: 20px;">Our goal is to offer you the best value for your goods and maintain a long-term relationship with you, our client.</p>
+					<p style="font-size: 20px;">We want your selling experience, and our service to you, to exceed your expectations.</p>
+					
 				</div>
 		
 			</div>
