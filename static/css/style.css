@@ -227,7 +227,7 @@ a:hover {
 
 #logo {
 	width: 197px;
-	height: 52px;
+	height: 69px;
 	display: block;
 	float: left;
 	cursor: pointer;
@@ -290,6 +290,18 @@ a:hover {
 #body {
 	padding: 48px 0 31px;
 }
+
+.login-form {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	min-width: 500px;
+	max-width: 1000px;
+	height: 45px;
+	margin: auto;
+  }
 
 #slider {
 	text-align: center;
@@ -1270,7 +1282,12 @@ h1 {
 
 #footer .col {
 	float: left;
-	width: 25.7%;
+	width: 23%;
+	padding-bottom: 37px;
+}
+#footer .cola {
+	float: left;
+	width: 23%;
 	padding-bottom: 37px;
 }
 
@@ -1279,11 +1296,11 @@ h1 {
 }
 
 #footer .col.contact {
-	width: 30%;
+	width: 23%;
 }
 
 #footer .col.newsletter {
-	width: 31.6%;
+	width: 25.6%;
 }
 
 #footer a {
@@ -1372,6 +1389,7 @@ h1 {
 	#logo {
 		background-image: url(../images/logo.png);
 		background-size: cover;
+		background-color: #717176;
 	}
 
 	#header .right-links span {

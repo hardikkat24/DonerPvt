@@ -7,7 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<link rel="stylesheet" media="all" href="{% static 'css/style.css' %}">
 	<link rel="stylesheet" media="all" href="{% static 'css/style2.css' %}">
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 	<script type="text/javascript">
 		var user = '{{request.user}}'
@@ -70,7 +69,7 @@
 </ul>
 {% endif %}
 
-	<header id="header">
+	<header id="header" style="background-color:#222224">
 		<div class="container">
 			<a href="{% url 'store' %}" id="logo" title="Doner Diamonds" style = "background-repeat: no-repeat;
   	background-size: cover;">Doner Diamonds</a>
@@ -92,7 +91,7 @@
 	</header>
 	<!-- / header -->
 
-	<nav id="menu">
+	<nav id="menu"  style="background-color:#222224">
 		<div class="container">
 			<div class="trigger"></div>
 			<ul>
@@ -111,7 +110,6 @@
             {% endblock content %}
 
 
-
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 	<footer id="footer">
 		<div class="container">
@@ -120,21 +118,25 @@
 				<div class="col media">
 					<h3>Social media</h3>
 					<ul class="social">
-						<li><a href="#"><span class="ico ico-fb"></span>Facebook</a></li>
+						<li><a href="https://www.facebook.com/Kenzodiamonds-106474004416008/?notif_id=1590567465751219&notif_t=page_invite_accept&ref=notif"><span class="ico ico-fb"></span>Facebook</a></li>
 						<li><a href="#"><span class="ico ico-tw"></span>Twitter</a></li>
 						<li><a href="https://instagram.com/doner_diamonds"><span class="ico"></span>Instagram</a></li>
 						<li><a href="#"><span class="ico ico-pi"></span>Pinterest</a></li>
 					</ul>
 				</div>
+				<div class="col">
+				<h3> Directions <h3>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.865816382681!2d-118.25562868519887!3d34.04731298060729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c7b5268cc5e3%3A0xb3649786f93ff6a2!2sDoner%20Diamonds%20Corporation!5e0!3m2!1sen!2sin!4v1592123344012!5m2!1sen!2sin" width="150" height="150" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				</div>
 				<div class="col contact">
 					<h3>Contact us</h3>
 					<p>Doner Diamonds<br>607 S. Hill St. Ste. 206<br>Los Angeles, CA 90014</p>
-					<p><span class="ico ico-em"></span><a href="#">contact@donerdiamonds.com</a></p>
-					<p><span class="ico ico-ph"></span>213-488-0372</p>
+					<p><span class="ico ico-em"></span><a href="mailto:kevin@donerdiamonds.com">kevin@donerdiamonds.com</a></p>
+					<p><span class="ico ico-ph"></span><a href="tel:+1 213-488-0372">+1 213-488-0372</a></p>
 				</div>
 				<div class="col newsletter">
 					<h3>Join our newsletter</h3>
-					<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium.</p>
+					<p>Stay updated with all the exciting offers coming up by joining here</p>
 					<form action="#">
 						<input type="text" placeholder="Your email address...">
 						<button type="submit"></button>
