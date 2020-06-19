@@ -19,6 +19,7 @@ class LoginForm(forms.Form):
                "class": "form-control"
            }
        ))
+    
 
 
 class SignUpForm(UserCreationForm):

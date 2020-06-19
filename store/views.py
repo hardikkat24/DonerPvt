@@ -13,6 +13,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .filters import ProductFilter
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 def store(request):
 	"""
@@ -137,21 +138,23 @@ def search(request):
 	order = data['order']
 	items = data['items']
 
-	product_list = Product.objects.filter( ordered__exact = False )
+	product_list = Product.objects.filter(ordered__exact = False)
 	product_filter = ProductFilter(request.GET, queryset = product_list)
 	product_list = product_filter.qs
 
-	page = request.GET.get("page", 1)
-	paginator = Paginator(product_list, 50)
+	# for p in product_list:
+	# 	print(p)
+	# page = request.GET.get("page", 1)
+	# paginator = Paginator(product_list, 50)
 
-	try:
-		products_p = paginator.page(page)
-	except PageNotAnInteger:
-		products_p = paginator.page(1)
-	except EmptyPage:
-		products_p = paginator.page(paginator.num_pages)
-
-	context = {'products':products_p, 'cartItems':cartItems, 'filter': product_filter}
+	# try:
+	# 	products_p = paginator.page(page)
+	# except PageNotAnInteger:
+	# 	products_p = paginator.page(1)
+	# except EmptyPage:
+	# 	products_p = paginator.page(paginator.num_pages)
+	# print(products_p)
+	context = {'products':product_list, 'cartItems':cartItems, 'filter': product_filter}
 	return render(request, 'store/products.html',context)
 
 
@@ -162,7 +165,7 @@ def login_view(request):
     	protocol = "https://"
     if request.GET.get('next') is not None:
     	redirect1 = protocol + request.META['HTTP_HOST'] + request.GET.get('next')
-
+	
     if form.is_valid():
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
@@ -172,7 +175,6 @@ def login_view(request):
             if request.GET.get('next') is None:
             	return redirect('store')
             return HttpResponseRedirect(redirect1)
-
     return render(request, "store/login.html", {"form": form})
 
 

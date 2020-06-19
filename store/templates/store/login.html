@@ -1,15 +1,33 @@
 {% extends 'store/main.html' %}
-
+{% load widget_tweaks %}
 {% block content %}
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <div class="container d-flex h-40 justify-content-center">
       <div class="row justify-content-center">
-        <div class="col-10">
+        <div class="col-10 form">
                 <form method="POST">
                 {% csrf_token %}
-                  
-                {{ form }}
-                <button type="submit" class="btn btn-success">Login</button>
+                <div class="body-form">
+                  <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2" style="color: red;">
+                  {% for error in form.non_field_errors %}
+                    {{ error }}
+                  {% endfor %}
+                  </div>
+            
+                  {% for field in form %}
+                  <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {% render_field field class="form-control" placeholder=field.label %}
+                    <div class="{% if field.errors %} invalid{% endif %}">
+                    {% for error in field.errors %}
+                      <p class="help-block" style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+            
+                <button type="submit" class="btn btn-success" style="margin-top: 5px;">Login</button>
                 </form>
                 <p class="uni_form">
                 New user ? <a href="{% url 'register' %}">Register here</a>

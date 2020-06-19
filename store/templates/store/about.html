@@ -1,4 +1,5 @@
 {% extends 'store/main.html' %}
+{% load static %}
 {% block content %}
 	<script>
 	$(document).ready(function(){
@@ -29,21 +30,42 @@
 	<div id="body">
 		<div class="container">
 			<div id="content" class="full">
-				<div class="entry">
-					<h2>WHO WE ARE</h2>
-					<p style="font-size: 20px;">Doner Diamonds is a direct importer of quality loose diamonds longstanding relationship with established global sources of quality goods allows it to provide its clientele with exceedingly competitive margins.</p>
-					<p style="font-size: 20px;">Doner Diamonds primarily supplies the wholesale industry with certified (GIA & EGL) and Non-certified (commercial) stones from its own extensive inventory of larger sized loose diamonds.</p>
-					<p style="font-size: 20px;">Doner Diamonds also offers quality diamond jewelry and custom-designed pieces to the retail public. For more information about one of our finished pieces or to inquire about our own custom design, <a href = "#footer">Contact Us</a> directly to make an appointment.</p>
-					<p style="font-size: 20px;">We have sold over 30,000 diamonds through our wholesale business and now are offering the same wholesale prices to you, the retailer. Feel free to contact us with any questions you may have. We are here to make your diamond purchase the most cost efficient and most pleasant experience you can have. </p>
-					<h2>HOW WE GOT HERE</h2>
-					<p style="font-size: 20px;">Doner Diamonds was first started by the Mr Ohannes Donikian when he brought his family and Diamond business over to America from Turkey in 1979. Mr Ohannes Donikian established themselves in the industry by keeping to his principles of quality, service, and expedience in everything Doner Diamonds does. Through this practice they grew the business steadily over the decades until  Arto & Kevin Donikian took over the business in the 1980's. building on everything their father bestowed upon and taught them, redefined the diamond market for consumers by being one of the few to exclusively offer and sell  (GIA & EGL) and Non-certified diamonds.</p>
-					<p style="font-size: 20px;">Since then, Doner Diamonds has been an enduring strong presence in the wholesale diamond industry. Doner Diamonds is recognized as a highly experienced and professional corporation whose reputation and expertise distinguish it from others in the trade.</p>
-					<p style="font-size: 20px;">Doner Diamonds has distinguished itself within the Diamond and Jewelry Market by providing a superior level of customer service and value to all of it's customers over the decades. We are always looking forward to providing you with exceptional guidance and design assistance in making any beautiful piece of jewelry and especially in designing your custom Ultimate Engagement Ring, making it truly that special symbol of your lifelong bond.</p>
-					<p style="font-size: 20px;">We are not limited in the number of carats we can buy. We buy Diamonds of all kinds including Melee and other designer jewelry as well.</p>
-					<p style="font-size: 20px;">Our goal is to offer you the best value for your goods and maintain a long-term relationship with you, our client.</p>
-					<p style="font-size: 20px;">We want your selling experience, and our service to you, to exceed your expectations.</p>
+				<div class="entry text-justify">
 					
+					<h2>WHO WE ARE</h2>
+					<div class="row">
+						<div class="col-md-5">
+							<!-- <img src="{% static 'images/office.jpeg' %}" class="img-fluid" style="height:600px;"> -->
+							<div class="embed-responsive embed-responsive-16by9">
+								<iframe class="" src="{% static 'videos/office_video.mp4' %}" allowfullscreen autoplay ></iframe>
+							  </div>
+							
+						</div>
+						<div class="col-md-7">
+							<p style="font-size: 17px;">Doner Diamonds is a direct importer of quality loose diamonds longstanding relationship with established global sources of quality goods allows it to provide its clientele with exceedingly competitive margins.</p>
+							<p style="font-size: 17px;">Doner Diamonds primarily supplies the wholesale industry with certified (GIA & EGL) and Non-certified (commercial) stones from its own extensive inventory of larger sized loose diamonds.</p>
+							<p style="font-size: 17px;">Doner Diamonds also offers quality diamond jewelry and custom-designed pieces to the retail public. For more information about one of our finished pieces or to inquire about our own custom design, <a href = "#footer">Contact Us</a> directly to make an appointment.</p>
+							<p style="font-size: 17px;">We have sold over 30,000 diamonds through our wholesale business and now are offering the same wholesale prices to you, the retailer. Feel free to contact us with any questions you may have. We are here to make your diamond purchase the most cost efficient and most pleasant experience you can have. </p>
+						</div>
+					</div>
+					<h2>HOW WE GOT HERE</h2>
+
+					<div class="row">
+						<div class="col-md-12">
+							<p style="font-size: 17px;">Doner Diamonds was first started by the Mr Ohannes Donikian when he brought his family and Diamond business over to America from Turkey in 1979. Mr Ohannes Donikian established themselves in the industry by keeping to his principles of quality, service, and expedience in everything Doner Diamonds does. Through this practice they grew the business steadily over the decades until  Arto & Kevin Donikian took over the business in the 1980's. building on everything their father bestowed upon and taught them, redefined the diamond market for consumers by being one of the few to exclusively offer and sell  (GIA & EGL) and Non-certified diamonds.</p>
+							<p style="font-size: 17px;">Since then, Doner Diamonds has been an enduring strong presence in the wholesale diamond industry. Doner Diamonds is recognized as a highly experienced and professional corporation whose reputation and expertise distinguish it from others in the trade.</p>
+							<p style="font-size: 17px;">Doner Diamonds has distinguished itself within the Diamond and Jewelry Market by providing a superior level of customer service and value to all of it's customers over the decades. We are always looking forward to providing you with exceptional guidance and design assistance in making any beautiful piece of jewelry and especially in designing your custom Ultimate Engagement Ring, making it truly that special symbol of your lifelong bond.</p>
+							<p style="font-size: 17px;">We are not limited in the number of carats we can buy. We buy Diamonds of all kinds including Melee and other designer jewelry as well.</p>
+							<p style="font-size: 17px;">Our goal is to offer you the best value for your goods and maintain a long-term relationship with you, our client.</p>
+							<p style="font-size: 17px;">We want your selling experience, and our service to you, to exceed your expectations.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+						  </div>
+					</div>
 				</div>
+				
 		
 			</div>
 			<!-- / content -->

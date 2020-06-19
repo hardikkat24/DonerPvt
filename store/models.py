@@ -56,7 +56,19 @@ CLARITY_CHOICES = [
 ]
 
 COLOR_CHOICES = [
-	('', ''), 
+	('D', 'D'), 
+	('E', 'E'), 
+	('F', 'F'), 
+	('G', 'G'),  
+	('H', 'H'), 
+	('I', 'I'), 
+	('J', 'J'), 
+	('K', 'K'), 
+	('L', 'L'), 
+	('M', 'M'), 
+	('N', 'N'), 
+]
+FLOUROSCENE_CHOICES = [
 	('D', 'D'), 
 	('E', 'E'), 
 	('F', 'F'), 
@@ -77,6 +89,21 @@ LAB_CHOICES = [
 	('OWN', 'OWN')
 ]
 
+CUT_CHOICES = [
+	('GIA', 'GIA'),
+	('EGL USA', 'EGL USA'),
+	('OWN', 'OWN')
+]
+SYM_CHOICES = [
+	('GIA', 'GIA'),
+	('EGL USA', 'EGL USA'),
+	('OWN', 'OWN')
+]
+POL_CHOICES = [
+	('GIA', 'GIA'),
+	('EGL USA', 'EGL USA'),
+	('OWN', 'OWN')
+]
 
 class Customer(models.Model):
 	user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
@@ -107,10 +134,10 @@ class Product(models.Model):
 	measurement = models.CharField(max_length = 50, null = True, blank = True)
 	dept = models.FloatField(null = True, blank = True)
 	tbl = models.IntegerField(null = True, blank = True)
-	cut = models.CharField(max_length = 100, null = True, blank = True, default = "-")
-	pol = models.CharField(max_length = 10, null = True, blank = True, default = "-")
-	sym = models.CharField(max_length = 10, null = True, blank = True, default = "-")
-	fl = models.CharField(max_length = 10, null = True, blank = True, default = "-")
+	cut = models.CharField(max_length = 100,choices=CUT_CHOICES, null = True, blank = True, default = "-")
+	pol = models.CharField(max_length = 10,choices=POL_CHOICES, null = True, blank = True, default = "-")
+	sym = models.CharField(max_length = 10,choices=SYM_CHOICES, null = True, blank = True, default = "-")
+	fl = models.CharField(max_length = 10,choices=FLOUROSCENE_CHOICES, null = True, blank = True, default = "-")
 	cul = models.CharField(max_length = 10, null = True, blank = True, default = "-")
 	girdle = models.CharField(max_length = 50, null = True, blank = True, default = "-")
 	lab = models.CharField(max_length = 25, choices = LAB_CHOICES, default = "OWN")
