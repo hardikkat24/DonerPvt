@@ -71,7 +71,6 @@
 	<!-- / body -->
 
 	<div id="body">
-		<div class="container-fluid">
 			<div class="products-wrap container">
 				<form method="GET" id = "filter_form">
 					{{ filter.form.shape.label_tag }}
@@ -187,63 +186,67 @@
 			</div>
 			<br>
 			<div class="container">
-				<table id="example" class = "table table-striped table-bordered " style="font-size: 12px">
-					<thead>
-						<th>Lot_no</th>
-						<th>Shape</th>
-						<th>Carat</th>
-						<th>Stone</th>
-						<th>Color</th>
-						<th>Clarity</th>
-						<th>Measurement</th>
-						<th>Dept</th>
-						<th>Tbl</th>
-						<th>Cut</th>
-						<th>Pol</th>
-						<th>Sym</th>
-						<th>Fl</th>
-						<th>Cul</th>
-						<th>Girdle</th>
-						<th>Lab</th>
-						<th>Rap</th>
-						<th>Price</th>
-						<th>View</th>
-						<th>Add to Cart</th>
-					</thead>
-				{% for product in products %}
-					<tr>
-						<td>{{product.lot_no}}</td>
-						<td>{{product.get_pseudo_shape_display }}</td>
-						<td>{{product.carat}}</td>
-						<td>{{product.stone}}</td>
-						<td>{{product.color}}</td>
-						<td>{{product.clarity}}</td>
-						<td>{{product.measurement }}</td>
-						<td>{{product.dept }}</td>
-						<td>{{product.tbl }}</td>
-						<td>{{product.cut }}</td>
-						<td>{{product.pol }}</td>
-						<td>{{product.sym }}</td>
-						<td>{{product.fl }}</td>
-						<td>{{product.cul }}</td>
-						<td>{{product.girdle }}</td>
-						<td>{{product.lab }}</td>
-						<td>{{product.rap }}</td>
-						<td>{{product.price }}</td>
-						<td>
-						<a href = "{% url 'view' product.pk %}">View</a>
-						</td>
-						<td>
-						<a href = "{% url 'add' product.pk %}">Add to cart</a>
-						</td>
-					</tr>
-				{% endfor %}
-				</table>
-			</div>
-				<!-- / content -->
-			
-		</div>
-		<!-- / container -->
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size: 12px;">
+						<thead>
+						<tr>
+							<th>Lot_no</th>
+							<th>Shape</th>
+							<th>Carat</th>
+							<th>Stone</th>
+							<th>Color</th>
+							<th>Clarity</th>
+							<th>Measurement</th>
+							<th>Dept</th>
+							<th>Tbl</th>
+							<th>Cut</th>
+							<th>Pol</th>
+							<th>Sym</th>
+							<th>Fl</th>
+							<th>Cul</th>
+							<th>Girdle</th>
+							<th>Lab</th>
+							<th>Rap</th>
+							<th>Price</th>
+							<th>View</th>
+							<th>Add to Cart</th>
+						</tr>
+						</thead>
+						
+						<tbody>
+						{% for product in products %}
+						<tr>
+							<td>{{product.lot_no}}</td>
+							<td>{{product.get_pseudo_shape_display }}</td>
+							<td>{{product.carat}}</td>
+							<td>{{product.stone}}</td>
+							<td>{{product.color}}</td>
+							<td>{{product.clarity}}</td>
+							<td>{{product.measurement }}</td>
+							<td>{{product.dept }}</td>
+							<td>{{product.tbl }}</td>
+							<td>{{product.cut }}</td>
+							<td>{{product.pol }}</td>
+							<td>{{product.sym }}</td>
+							<td>{{product.fl }}</td>
+							<td>{{product.cul }}</td>
+							<td>{{product.girdle }}</td>
+							<td>{{product.lab }}</td>
+							<td>{{product.rap }}</td>
+							<td>{{product.price }}</td>
+							<td>
+							<a href = "{% url 'view' product.pk %}">View</a>
+							</td>
+							<td>
+							<a href = "{% url 'add' product.pk %}">Add to cart</a>
+							</td>
+						</tr>
+					{% endfor %}
+					
+						</tbody> 
+					</table>
+				</div>
+			</div>		
 	</div>
 	<!-- / body -->
 {% endblock content %}
@@ -350,15 +353,6 @@
 							c.preventDefault();
 						});
 					});
-				</script>
-				<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-				<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-				<script>
-				$(document).ready(function() {
-					$('#example').DataTable({
-						"scrollX":true
-					});
-				} );
 				</script>
 				{% endblock %}
 				
