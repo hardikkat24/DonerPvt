@@ -146,7 +146,8 @@ LOGIN_URL = 'login'
 # Email
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
 
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 
