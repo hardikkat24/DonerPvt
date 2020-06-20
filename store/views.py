@@ -37,7 +37,7 @@ def add(request, pk):
 	orderitem, orderitemcreated = OrderItem.objects.get_or_create(product = product, order = order)
 	if not orderitemcreated:
 		messages.info(request, 'Item already in cart!')
-	return redirect('cart')
+	return redirect('search')
 
 
 @login_required
