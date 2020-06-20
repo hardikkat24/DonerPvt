@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'import_export',
-
+    'widget_tweaks',
     'store.apps.StoreConfig',
 ]
 
