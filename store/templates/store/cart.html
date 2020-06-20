@@ -28,9 +28,9 @@
 						<tr>
 							<td class="items">
 								<div class="image">
-								<img src="{{product.imageURL}}" alt="">
+								<img style = "width: 200px;" src="{{item.product.imageURL}}" alt="">
 								</div>
-								<h3><a href="#">{{ item.product.lot_no }}</a></h3>
+								<h3><a href="{% url 'view' item.product.pk %}">{{ item.product.lot_no }}</a></h3>
 								<p>{{ item.product.description }}</p>
 							</td>
 							<td class="price">${{item.product.price}}</td>
