@@ -75,9 +75,9 @@
 				<form method="GET" id = "filter_form">
 					{{ filter.form.shape.label_tag }}
 
-					<div class="row">
+					<div class="row" style="padding-left:20px ;">
 						{% for choice in filter.form.shape %}
-							<label class="image-checkbox">
+							<label class="image-checkbox ">
 								<img class="img-responsive" src = "{% static choice.choice_label %}" style = "height:  50px;">
 								{{ choice.tag }}
 								<div class="mask ">
@@ -88,7 +88,7 @@
 						{% endfor %}
 					</div>
 					{{ filter.form.color.label_tag }}
-					<div class="row">
+					<div class="row" style="padding-left:20px ;">
 						{% for choice in filter.form.color %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter ">
@@ -99,7 +99,7 @@
 						{% endfor %}
 					</div>
 					{{ filter.form.clarity.label_tag }}
-					<div class="row">
+					<div class="row" style="padding-left:20px ;">
 						{% for choice in filter.form.clarity %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter">
@@ -111,7 +111,7 @@
 					</div>
 
 					{{ filter.form.lab.label_tag }}
-					<div class="row">
+					<div class="row" style="padding-left:20px ;">
 						{% for choice in filter.form.lab %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter">
@@ -122,7 +122,7 @@
 					{% endfor %}
 					</div>
 					{{ filter.form.fl.label_tag }}
-					<div class="row">
+					<div class="row" style="padding-left:20px ;">
 						{% for choice in filter.form.fl %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter">
@@ -133,7 +133,7 @@
 					{% endfor %}
 					</div>
 					{{ filter.form.cut.label_tag }}
-					<div class="row">
+					<div class="row" style="padding-left:20px ;">
 						{% for choice in filter.form.cut %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter">
@@ -144,7 +144,7 @@
 					{% endfor %}
 					</div>
 					{{ filter.form.symmetry.label_tag }}
-					<div class="row">
+					<div class="row" style="padding-left:20px ;">
 						{% for choice in filter.form.symmetry %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter">
@@ -158,7 +158,7 @@
 					<br>
 					<h4>Price Range:</h4>
 
-					<div class="form-group row">
+					<div class="form-group row" style="padding-left:20px ;">
 						<div class="col-sm-2">{{ filter.form.price_gt.label_tag }}</div>
 						<div class="col-sm-3">{% render_field filter.form.price_gt class="form-control" %}</div>
 						<div class="col-sm-2">{{ filter.form.price_lt.label_tag }}</div>
@@ -166,7 +166,7 @@
 					</div>
 					<br>
 					<h4>Discount Range:</h4>
-					<div class="form-group row">
+					<div class="form-group row" style="padding-left:20px ;">
 						<div class="col-sm-2">{{ filter.form.diss_gt.label_tag }}</div>
 						<div class="col-sm-3">{% render_field filter.form.diss_gt class="form-control" %}</div>
 						<div class="col-sm-2">{{ filter.form.diss_lt.label_tag }}</div>
@@ -174,11 +174,11 @@
 					</div>
 					<br>			
 					<h4>Size Range:</h4>
-					<div class="form-group row">
+					<div class="form-group row" style="padding-left:20px ;">
 						<div class="col-sm-2">{{ filter.form.carat_gt.label_tag }}</div>
-						<div class="col-sm-3">{% render_field filter.form.carat_gt class="form-control" %}</div>
+						<div class="col-sm-3 limit">{% render_field filter.form.carat_gt class="form-control" %}</div>
 						<div class="col-sm-2">{{ filter.form.carat_lt.label_tag }}</div>
-						<div class="col-sm-3">{% render_field filter.form.carat_lt class="form-control" %}</div>
+						<div class="col-sm-3 limit">{% render_field filter.form.carat_lt class="form-control" %}</div>
 					</div>
 					
 					<button type = "submit" class="btn btn-primary">Search</button>
@@ -305,6 +305,13 @@
 				</div>
 
 				{% block javascript %}
+				<script>
+					$(document).ready(function(){
+						$('.limit input').attr('min','0.1');
+						$('.limit input').attr('max','10');
+
+					});
+				</script>
 				<script type="text/javascript">
 					jQuery(function ($) {
 						$(".image-checkbox").each(function () {
