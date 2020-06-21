@@ -25,12 +25,12 @@
 									</tr>
 									<tr>
 										<td valign="top" align="left">Seller Name</td>
-										<td valign="top" align="left">: xxxx</td>
+										<td valign="top" align="left">: Kevin</td>
 									</tr>
 									<tr>
 										<td valign="top" align="left">Email ID</td>
 										<td valign="top" align="left">
-											:&nbsp;<a href="mailto:jp76b@gmail.com" rel="noreferrer" target="_blank">jp76b@gmail.com</a></td>
+											:&nbsp;<a href="mailto:kevin@donerdiamonds.com" rel="noreferrer" target="_blank">kevin@donerdiamonds.com</a></td>
 									</tr>
 									<tr>
 										<td valign="top" align="left">Message</td>
@@ -38,7 +38,7 @@
 									</tr>
 									<tr>
 										<td valign="top" align="left">Date</td>
-										<td valign="top" align="left">: {{datetime}} [IST]</td>
+										<td valign="top" align="left">: {{datetime}}</td>
 									</tr>
 									<tr>
 										<td valign="top" align="left">Order By</td>
@@ -67,28 +67,16 @@
 										<th style="font-size:9pt" valign="middle">Shape</th>
 										<th style="font-size:9pt" valign="middle">Carat</th>
 										<th style="font-size:9pt" valign="middle">Clarity</th>
-										<th style="font-size:9pt" valign="middle">Col</th>
-										<th style="font-size:9pt" valign="middle">CS</th>
-										<th style="font-size:9pt" valign="middle">Rap</th>
+										<th style="font-size:9pt" valign="middle">Color</th>
 										<th style="font-size:9pt" valign="middle">Rap%</th>
 										<th style="font-size:9pt" valign="middle">Pr/Ct</th>
 										<th style="font-size:9pt" valign="middle">Amount</th>
 										<th style="font-size:9pt" valign="middle">Cut</th>
-										<th style="font-size:9pt" valign="middle">Pol</th>
-										<th style="font-size:9pt" valign="middle">Sym</th>
-										<th style="font-size:9pt" valign="middle">Fl</th>
-										<th style="font-size:9pt" valign="middle">Fc</th>
-										<th style="font-size:9pt" valign="middle">Td%</th>
-										<th style="font-size:9pt" valign="middle">Tab%</th>
-										<th style="font-size:9pt" valign="middle">Ratio</th>
+										<th style="font-size:9pt" valign="middle">Polish</th>
+										<th style="font-size:9pt" valign="middle">Symmetry</th>
+										<th style="font-size:9pt" valign="middle">Flouroscence</th>
 										<th style="font-size:9pt" valign="middle">Measurement</th>
 										<th style="font-size:9pt" valign="middle">Lab</th>
-										<th style="font-size:9pt" valign="middle">Bit</th>
-										<th style="font-size:9pt" valign="middle">Bc</th>
-										<th style="font-size:9pt" valign="middle">Wt</th>
-										<th style="font-size:9pt" valign="middle">Wc</th>
-										<th style="font-size:9pt" valign="middle">Milky</th>
-										<th style="font-size:9pt" valign="middle">Lins</th>
 										<th style="font-size:9pt" valign="middle">Cert No</th>
 										<th style="font-size:9pt" valign="middle">Dept</th>
 										<th style="font-size:9pt" valign="middle">Location</th>
@@ -106,30 +94,19 @@
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.carat }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.get_clarity_display }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.get_color_display }}</td>
-										<td style="font-size:9pt" valign="middle" align="center">WH(don't know)</td>
-										<td style="font-size:9pt" valign="middle" align="center">4100(don't know)</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.rap }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.price_ct }}</td>
-										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.price }} * {{ orderitem.quantity }} </td>
+										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.price }}  {{ orderitem.quantity }} </td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.cut }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.pol }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.sym }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.fl }}</td>
-										<td style="font-size:9pt" valign="middle" align="center">-(idk)</td>
-										<td style="font-size:9pt" valign="middle" align="center">72.50(idk)</td>
-										<td style="font-size:9pt" valign="middle" align="center">68.00(idk)</td>
-										<td style="font-size:9pt" valign="middle" align="center">1.00</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.measurement }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.lab }}</td>
-										<td style="font-size:9pt" valign="middle" align="center">BT1(idk)</td>
-										<td style="font-size:9pt" valign="middle" align="center">BC0(idk)</td>
-										<td style="font-size:9pt" valign="middle" align="center">WT1(idk)</td>
-										<td style="font-size:9pt" valign="middle" align="center">WC1(idk)</td>
-										<td style="font-size:9pt" valign="middle" align="center">M0(idk)</td>
-										<td style="font-size:9pt" valign="middle" align="center">L.I(idk)</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.certno }}</td>
 										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.dept }}</td>
-										<td style="font-size:9pt" valign="middle" align="center">MUMBAI(which location)</td>
+										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.dept }}</td>
+										<td style="font-size:9pt" valign="middle" align="center">{{ orderitem.product.dept }}</td>
 										<td style="font-size:9pt" valign="middle" align="center"></td>
 									</tr>
 									{% endfor %}
@@ -156,7 +133,7 @@
 					</tr>
 					<tr>
 						<td style="white-space:nowrap;font-family:'trebuchet ms','helvetica',sans-serif;font-size:13px;padding-top:5px" valign="top" align="left">
-							Thank you for placing the order through xxxx&nbsp;Website.
+							Thank you for placing the order through <a href="www.donerdiamonds.com"> Doner Diamonds</a>&nbsp;Website.
 						</td>
 					</tr>
 					<tr>
