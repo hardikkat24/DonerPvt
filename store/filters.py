@@ -26,7 +26,7 @@ class ProductFilter(django_filters.FilterSet):
 	fl = django_filters.MultipleChoiceFilter(field_name = 'fl', choices = FLOUROSCENE_CHOICES, widget=forms.CheckboxSelectMultiple())
 	cut = django_filters.MultipleChoiceFilter(field_name = 'cut', choices = CUT_CHOICES, widget=forms.CheckboxSelectMultiple())
 	sym = django_filters.MultipleChoiceFilter(field_name = 'sym', choices = SYM_CHOICES, widget=forms.CheckboxSelectMultiple())
-	pol = django_filters.MultipleChoiceFilter(field_name = 'pol', choices = SYM_CHOICES, widget=forms.CheckboxSelectMultiple())
+	pol = django_filters.MultipleChoiceFilter(field_name = 'pol', choices = POL_CHOICES, widget=forms.CheckboxSelectMultiple())
 
 	price_gt = django_filters.NumberFilter(field_name = 'price', lookup_expr = 'gt')
 	price_lt = django_filters.NumberFilter(field_name = 'price', lookup_expr = 'lt')
