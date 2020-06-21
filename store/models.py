@@ -69,40 +69,36 @@ COLOR_CHOICES = [
 	('N', 'N'), 
 ]
 FLOUROSCENE_CHOICES = [
-	('D', 'D'), 
-	('E', 'E'), 
 	('F', 'F'), 
-	('G', 'G'),  
-	('H', 'H'), 
-	('I', 'I'), 
-	('J', 'J'), 
-	('K', 'K'), 
-	('L', 'L'), 
 	('M', 'M'), 
 	('N', 'N'), 
+	('S', 'S'),
 ]
 
 
 LAB_CHOICES = [
 	('GIA', 'GIA'),
 	('EGL USA', 'EGL USA'),
-	('OWN', 'OWN')
+	('OWN', 'Non-Certified')
 ]
 
 CUT_CHOICES = [
-	('GIA', 'GIA'),
-	('EGL USA', 'EGL USA'),
-	('OWN', 'OWN')
+	('EX', 'EX'),
+	('VG', 'VG'),
+	('F', 'F'),
+	('G','G'),
 ]
 SYM_CHOICES = [
-	('GIA', 'GIA'),
-	('EGL USA', 'EGL USA'),
-	('OWN', 'OWN')
+	('X', 'X'),
+	('VG', 'VG'),
+	('F', 'F'),
+	('G','G'),
 ]
 POL_CHOICES = [
-	('GIA', 'GIA'),
-	('EGL USA', 'EGL USA'),
-	('OWN', 'OWN')
+	('EX', 'EX'),
+	('VG', 'VG'),
+	('F', 'F'),
+	('G','G'),
 ]
 
 class Customer(models.Model):
