@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import json
 import datetime
-from .models import * 
+from .models import *
 from .utils import cookieCart, cartData, guestOrder, sendMail
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -17,7 +17,7 @@ from django.contrib import messages
 
 def store(request):
 	"""
-	
+
 	"""
 	data = cartData(request)
 
@@ -36,9 +36,17 @@ def add(request, pk):
 	order, created = Order.objects.get_or_create(customer = request.user.customer, complete = False)
 	orderitem, orderitemcreated = OrderItem.objects.get_or_create(product = product, order = order)
 	if not orderitemcreated:
-		messages.info(request, 'Item already in cart!')
-	return redirect('search')
+		messages.info(request, '<p style="color: Red">Item already in cart!</p>')
+	return HttpResponseRedirect(self.request.path_info)
 
+@login_required
+def add2(request, pk):
+    product = Product.objects.get(pk = pk)
+    order, created = Order.objects.get_or_create(customer = request.user.customer, complete = False)
+    orderitem, orderitemcreated = OrderItem.objects.get_or_create(product = product, order = order)
+    if not orderitemcreated:
+         messages.info(request, 'Item already in cart!')
+    return redirect('store')
 
 @login_required
 def remove(request, pk):
@@ -56,14 +64,14 @@ def view(request, pk):
 			quantity = form.cleaned_data.get('quantity')
 			order, created = Order.objects.get_or_create(customer = request.user.customer, complete = False)
 			orderitem, orderitemcreated = OrderItem.objects.get_or_create(product = product, order = order)
-		
+
 			orderitem.quantity = quantity
 			if orderitem.quantity > orderitem.product.stone:
 				orderitem.quantity = orderitem.product.stone
 				messages.info(request, 'Only '+ str(orderitem.product.stone) + "piece(s) left !" )
 
 			orderitem.save()
-			
+
 
 
 	data = cartData(request)
@@ -94,7 +102,7 @@ def cart(request):
 @login_required
 def checkout(request):
 	data = cartData(request)
-	
+
 	cartItems = data['cartItems']
 	order = data['order']
 	items = data['items']
@@ -165,7 +173,7 @@ def login_view(request):
     	protocol = "https://"
     if request.GET.get('next') is not None:
     	redirect1 = protocol + request.META['HTTP_HOST'] + request.GET.get('next')
-	
+
     if form.is_valid():
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")

@@ -15,7 +15,6 @@ MarkupPy==1.14
 odfpy==1.4.1
 openpyxl==3.0.3
 Pillow==7.1.1
-pkg-resources==0.0.0
 psycopg2==2.8.5
 pytz==2019.3
 PyYAML==5.3.1

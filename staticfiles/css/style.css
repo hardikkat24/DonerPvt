@@ -7,7 +7,7 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
+article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -28,10 +28,11 @@ input[type=tel], input[type=url], input[type=password],
 input[type=text], input[type=email], input[type=reset],
 input[type=button], input[type=submit], button, textarea {
 	-webkit-appearance: none;
-	-webkit-border-radius: 0;
+	-webkit-border-radius: 5px;
+	-border-radius: 5px;
 }
 
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -59,22 +60,22 @@ table {
 	border-spacing: 0;
 }
 
-a[href], label[for], select, 
+a[href], label[for], select,
 input[type=checkbox], input[type=radio] {
 	cursor: pointer;
 }
 
-button, input[type=button], input[type=image], 
+button, input[type=button], input[type=image],
 input[type=reset], input[type=submit] {
 	padding: 0;
 	overflow: visible;
 	cursor: pointer;
 }
 
-button::-moz-focus-inner, 
-input[type=button]::-moz-focus-inner, 
-input[type=image]::-moz-focus-inner, 
-input[type=reset]::-moz-focus-inner, 
+button::-moz-focus-inner,
+input[type=button]::-moz-focus-inner,
+input[type=image]::-moz-focus-inner,
+input[type=reset]::-moz-focus-inner,
 input[type=submit]::-moz-focus-inner {
 	border: 0;
 }
@@ -125,7 +126,7 @@ abbr, acronym {
 	cursor: help;
 }
 
-sub, 
+sub,
 sup {
 	position: relative;
 	font-size: 75%;
@@ -227,7 +228,7 @@ a:hover {
 
 #logo {
 	width: 197px;
-	height: 52px;
+	height: 69px;
 	display: block;
 	float: left;
 	cursor: pointer;
@@ -290,6 +291,18 @@ a:hover {
 #body {
 	padding: 48px 0 31px;
 }
+
+.login-form {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	min-width: 500px;
+	max-width: 1000px;
+	height: 45px;
+	margin: auto;
+  }
 
 #slider {
 	text-align: center;
@@ -1270,7 +1283,12 @@ h1 {
 
 #footer .col {
 	float: left;
-	width: 25.7%;
+	width: 23%;
+	padding-bottom: 37px;
+}
+#footer .cola {
+	float: left;
+	width: 23%;
 	padding-bottom: 37px;
 }
 
@@ -1279,11 +1297,11 @@ h1 {
 }
 
 #footer .col.contact {
-	width: 30%;
+	width: 23%;
 }
 
 #footer .col.newsletter {
-	width: 31.6%;
+	width: 25.6%;
 }
 
 #footer a {
@@ -1300,7 +1318,7 @@ h1 {
 
 
 /* Fonts
-------------------------------------------------------------------------------*/ 
+------------------------------------------------------------------------------*/
 
 @font-face {
 	font-family: 'Novecentowide';
@@ -1364,10 +1382,10 @@ h1 {
 }
 
 /* Media
-------------------------------------------------------------------------------*/ 
+------------------------------------------------------------------------------*/
 
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 	#logo {
 		background-image: url(../images/logo.png);
@@ -1507,7 +1525,7 @@ h1 {
 	.products-wrap {
 		overflow: visible;
 	}
-	
+
 	#body{
 		padding-top: 25px;
 	}
@@ -1617,7 +1635,7 @@ h1 {
 		margin: 10px 0 0;
 		text-align: center;
 	}
-		
+
 	.total-count h3 {
 		line-height: normal;
 		font-size: 24px;

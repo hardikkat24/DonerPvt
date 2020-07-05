@@ -18,17 +18,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-DEBUG = True
+DEBUG = False
 # SECURITY WARNING: keep the secret key used in production secret!
 if DEBUG is True:
     SECRET_KEY = "z+ksf@)0d^qojbh4rnp4b1to$hq&*tt(3bs$gf(3i267g$k9ln"
 else:
-    SECRET_KEY = os.environ.get('SECRET_KEY') 
+    SECRET_KEY = "BSpwG$',.hxGGCR30Dcb{(ajt7G#:Y"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.donerdiamonds.com']
 
 
 # Application definition
@@ -143,15 +143,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = 'login'
 
-# Email
-
 EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST = os.environ.get('EMAIL_HOST')
 
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_USER = 'donerdiamonds@gmail.com'
+EMAIL_HOST_PASSWORD = 'donerdi@monds123'
+# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 EMAIL_PORT = 587
 

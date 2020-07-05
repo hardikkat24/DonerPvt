@@ -33,7 +33,7 @@
 							<img src="{{product.imageURL}}" alt="">
 							<h3>{{product.lot_no}}</h3>
 							<h4>${{product.price}}</h4>
-							<a class="btn btn-outline-secondary add-btn update-cart" href = "{% url 'add' product.pk %}">Add to cart</a>
+							<a class="btn btn-outline-secondary add-btn update-cart" href = "{% url 'add2' product.pk %}">Add to cart</a>
 						</article>
 						{% endfor %}
 					</section>
