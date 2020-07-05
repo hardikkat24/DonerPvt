@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 
 SHAPE_CHOICES = [
 	('OTHER', 'OTHER'),
+	('RD', 'Round'),#
 	('AS', 'Asscher'),#
 	('CU', 'Cushion'),#
 	('EC', 'Emerald'),#
@@ -14,11 +15,10 @@ SHAPE_CHOICES = [
 	('PR', 'Princess'),#
 	('PS', 'Pear Shape'),#
 	('RA', 'Radiant'),#
-	('RD', 'Round'),#
 ]
 
 PSEUDO_SHAPE_CHOICES = [
-	('AS', 'Asscher'),#
+    ('RD', 'Round'),#
 	('BU', 'BU1'),
 	('CU', 'Cushion'),#
 	('EC', 'Emerald'),#
@@ -31,6 +31,7 @@ PSEUDO_SHAPE_CHOICES = [
 	('PS', 'Pear Shape'),#
 	('RA', 'Radiant'),#
 	('RD', 'Round'),#
+	('AS', 'Asscher'),#
 	('STB', 'STB1'),
 	('TB', 'TB1'),
 	('TR', 'TR1'),
@@ -40,39 +41,37 @@ x = [p[0] for p in SHAPE_CHOICES]
 
 CLARITY_CHOICES = [
 	('FL', 'FL'),
-	('I1', 'I1'), 
+	('IF', 'IF'),
+	('VVS1', 'VVS1'),
+	('VVS2', 'VVS2'),
+	('VS1', 'VS1'),
+	('VS2', 'VS2'),
+	('SI1', 'SI1'),
+	('SI2', 'SI2'),
+	('SI3', 'SI3'),
+	('I1', 'I1'),
 	('I2', 'I2'),
-	('IF', 'IF'), 
-	('SI', 'SI'), 
-	('SI1', 'SI1'), 
-	('SI2', 'SI2'), 
-	('SI3', 'SI3'), 
-	('VS', 'VS'), 
-	('VS1', 'VS1'), 
-	('VS2', 'VS2'), 
-	('VVS1', 'VVS1'), 
-	('VVS2', 'VVS2'), 
-
 ]
 
 COLOR_CHOICES = [
-	('D', 'D'), 
-	('E', 'E'), 
-	('F', 'F'), 
-	('G', 'G'),  
-	('H', 'H'), 
-	('I', 'I'), 
-	('J', 'J'), 
-	('K', 'K'), 
-	('L', 'L'), 
-	('M', 'M'), 
-	('N', 'N'), 
+	('D', 'D'),
+	('E', 'E'),
+	('F', 'F'),
+	('G', 'G'),
+	('H', 'H'),
+	('I', 'I'),
+	('J', 'J'),
+	('K', 'K'),
+	('L', 'L'),
+	('M', 'M'),
+	('N', 'N'),
 ]
 FLOUROSCENE_CHOICES = [
-	('F', 'F'), 
-	('M', 'M'), 
-	('N', 'N'), 
-	('S', 'S'),
+    ('N', 'NONE'),
+	('F', 'FAINT'),
+	('M', 'MEDIUM'),
+	('S', 'STRONG'),
+	('VS','VERY STRONG')
 ]
 
 
@@ -85,20 +84,20 @@ LAB_CHOICES = [
 CUT_CHOICES = [
 	('EX', 'EX'),
 	('VG', 'VG'),
-	('F', 'F'),
-	('G','G'),
+	('G','GD'),
+	('F', 'FR'),
 ]
 SYM_CHOICES = [
-	('X', 'X'),
+	('X', 'EX'),
 	('VG', 'VG'),
-	('F', 'F'),
-	('G','G'),
+	('G','GD'),
+	('F', 'FR'),
 ]
 POL_CHOICES = [
 	('EX', 'EX'),
 	('VG', 'VG'),
-	('F', 'F'),
-	('G','G'),
+	('G','GD'),
+	('F', 'FR'),
 ]
 
 class Customer(models.Model):
@@ -154,7 +153,7 @@ class Product(models.Model):
 	@property
 	def price_ct(self):
 		return self.price / self.carat
-	
+
 
 	@property
 	def imageURL(self):
@@ -178,8 +177,8 @@ class Product(models.Model):
 			self.shape = "OTHER"
 		if self.stone > 0:
 			self.ordered = False
-		super(Product, self).save(*args, **kwargs) 
-	
+		super(Product, self).save(*args, **kwargs)
+
 
 	class Meta:
    		ordering = ['lot_no']
@@ -194,7 +193,7 @@ class Order(models.Model):
 
 	def __str__(self):
 		return str(self.id)
-	"""	
+	"""
 	@property
 	def shipping(self):
 		shipping = False
@@ -213,13 +212,13 @@ class Order(models.Model):
 	def get_cart_total(self):
 		orderitems = self.orderitem_set.all()
 		total = sum([item.get_total for item in orderitems])
-		return total 
+		return total
 
 	@property
 	def get_cart_items(self):
 		orderitems = self.orderitem_set.all()
 		total = sum([item.quantity for item in orderitems])
-		return total 
+		return total
 
 class OrderItem(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)

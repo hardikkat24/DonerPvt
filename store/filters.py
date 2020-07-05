@@ -4,18 +4,19 @@ from django import forms
 from .models import COLOR_CHOICES, CLARITY_CHOICES, LAB_CHOICES, FLOUROSCENE_CHOICES,CUT_CHOICES,SYM_CHOICES,POL_CHOICES
 
 SHAPE_CHOICES_URL = [
-	('AS', 'images/asscher.svg'),
-	('CU', 'images/cushion.svg'),
-	('EC', 'images/emerald.svg'),
-	('HS', 'images/heart.svg'),
-	('MQ', 'images/marquise.svg'),
-	('OV', 'images/oval.svg'),
-	('PR', 'images/princess.svg'),
-	('PS', 'images/pear.svg'),
-	('RA', 'images/radiant.svg'),
 	('RD', 'images/round.svg'),
+	('PR', 'images/princess.svg'),
+	('OV', 'images/oval.svg'),
+	('MQ', 'images/marquise.svg'),
+	('EC', 'images/emerald.svg'),
+	('AS', 'images/asscher.svg'),
+	('PS', 'images/pear.svg'),
+	('HS', 'images/heart.svg'),
+	('CU', 'images/cushion.svg'),
+	('RA', 'images/radiant.svg'),
 	('OTHER', 'images/other.svg'),
 ]
+
 
 
 class ProductFilter(django_filters.FilterSet):

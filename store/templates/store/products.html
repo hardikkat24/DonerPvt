@@ -82,17 +82,26 @@
 								{{ choice.tag }}
 								<div class="mask ">
 								</div>
-								
-							</label> 
+
+							</label>
 							<br>
 						{% endfor %}
 					</div>
+
+					<p>Size Range:</p>
+					<div class="form-group row" style="padding-left:20px ;">
+						<div class="col-sm-2">{{ filter.form.carat_gt.label_tag }}</div>
+						<div class="col-sm-3 limit">{% render_field filter.form.carat_gt class="form-control" %}</div>
+						<div class="col-sm-2">{{ filter.form.carat_lt.label_tag }}</div>
+						<div class="col-sm-3 limit">{% render_field filter.form.carat_lt class="form-control" %}</div>
+					</div>
+
 					{{ filter.form.color.label_tag }}
 					<div class="row">
 						{% for choice in filter.form.color %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter ">
-								{{ choice.tag }} 
+								{{ choice.tag }}
 								{{ choice.choice_label }}
 								</label>
 						</div>
@@ -103,7 +112,7 @@
 						{% for choice in filter.form.clarity %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter">
-								{{ choice.tag }} 
+								{{ choice.tag }}
 								{{ choice.choice_label }}
 								</label>
 						</div>
@@ -115,20 +124,7 @@
 						{% for choice in filter.form.lab %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter">
-								{{ choice.tag }} 
-								{{ choice.choice_label }}
-								</label>
-						</div>
-					{% endfor %}
-					</div>
-					<br>
-					<p> Fluroscence: </p>
-					<div class="row">
-						
-						{% for choice in filter.form.fl %}
-						<div class="btn-group-toggle btns" data-toggle="buttons">
-							<label class="btn btn-light button-filter">
-								{{ choice.tag }} 
+								{{ choice.tag }}
 								{{ choice.choice_label }}
 								</label>
 						</div>
@@ -140,38 +136,54 @@
 						{% for choice in filter.form.cut %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter">
-								{{ choice.tag }} 
+								{{ choice.tag }}
 								{{ choice.choice_label }}
 								</label>
 						</div>
 					{% endfor %}
 				</div>
 				<br>
-					<p> Symmetry: </p>
-					<div class="row">
-						{% for choice in filter.form.sym %}
-						<div class="btn-group-toggle btns" data-toggle="buttons">
-							<label class="btn btn-light button-filter">
-								{{ choice.tag }} 
-								{{ choice.choice_label }}
-								</label>
-						</div>
-					{% endfor %}
-					</div>
-				<br>
 					<p> Polish: </p>
 					<div class="row">
 						{% for choice in filter.form.pol %}
 						<div class="btn-group-toggle btns" data-toggle="buttons">
 							<label class="btn btn-light button-filter">
-								{{ choice.tag }} 
+								{{ choice.tag }}
 								{{ choice.choice_label }}
 								</label>
 						</div>
 					{% endfor %}
 					</div>
 					<br>
-					<P>Price Range:</p>
+					<p> Symmetry: </p>
+					<div class="row">
+						{% for choice in filter.form.sym %}
+						<div class="btn-group-toggle btns" data-toggle="buttons">
+							<label class="btn btn-light button-filter">
+								{{ choice.tag }}
+								{{ choice.choice_label }}
+								</label>
+						</div>
+					{% endfor %}
+					</div>
+
+					<br>
+					<p> Fluroscence: </p>
+					<div class="row">
+
+						{% for choice in filter.form.fl %}
+						<div class="btn-group-toggle btns" data-toggle="buttons">
+							<label class="btn btn-light button-filter">
+								{{ choice.tag }}
+								{{ choice.choice_label }}
+								</label>
+						</div>
+					{% endfor %}
+					</div>
+
+
+					<br>
+					<P>Total Amount:</p>
 
 					<div class="form-group row">
 						<div class="col-sm-2">{{ filter.form.price_gt.label_tag }}</div>
@@ -180,22 +192,16 @@
 						<div class="col-sm-3">{% render_field filter.form.price_lt class="form-control" %}</div>
 					</div>
 					<br>
-					<p>Discount Range:</p>
+					<p>Discount (%):</p>
 					<div class="form-group row">
 						<div class="col-sm-2">{{ filter.form.diss_gt.label_tag }}</div>
 						<div class="col-sm-3">{% render_field filter.form.diss_gt class="form-control" %}</div>
 						<div class="col-sm-2">{{ filter.form.diss_lt.label_tag }}</div>
 						<div class="col-sm-3">{% render_field filter.form.diss_lt class="form-control" %}</div>
 					</div>
-					<br>			
-					<p>Size Range:</p>
-					<div class="form-group row" style="padding-left:20px ;">
-						<div class="col-sm-2">{{ filter.form.carat_gt.label_tag }}</div>
-						<div class="col-sm-3 limit">{% render_field filter.form.carat_gt class="form-control" %}</div>
-						<div class="col-sm-2">{{ filter.form.carat_lt.label_tag }}</div>
-						<div class="col-sm-3 limit">{% render_field filter.form.carat_lt class="form-control" %}</div>
-					</div>
-					
+					<br>
+
+
 					<button type = "submit" class="btn btn-primary">Search</button>
 				</form>
 			</div>
@@ -208,14 +214,13 @@
 							<th>Lot_no</th>
 							<th>Shape</th>
 							<th>Carat</th>
-							<th>Stone</th>
 							<th>Color</th>
 							<th>Clarity</th>
 							<th>Measurement</th>
-							<th>Dept</th>
-							<th>Tbl</th>
+							<th>Depth</th>
+							<th>Tablebl</th>
 							<th>Cut</th>
-							<th>Pol</th>
+							<th>Polish</th>
 							<th>Sym</th>
 							<th>Fl</th>
 							<th>Cul</th>
@@ -227,14 +232,13 @@
 							<th>Add to Cart</th>
 						</tr>
 						</thead>
-						
+
 						<tbody>
 						{% for product in products %}
 						<tr>
-							<td>{{product.lot_no}}</td>
+							<td><h3></h3>{{product.lot_no}}</h3></td>
 							<td>{{product.get_pseudo_shape_display }}</td>
 							<td>{{product.carat}}</td>
-							<td>{{product.stone}}</td>
 							<td>{{product.color}}</td>
 							<td>{{product.clarity}}</td>
 							<td>{{product.measurement }}</td>
@@ -257,11 +261,11 @@
 							</td>
 						</tr>
 					{% endfor %}
-					
-						</tbody> 
+
+						</tbody>
 					</table>
 				</div>
-			</div>		
+			</div>
 	</div>
 	<!-- / body -->
 {% endblock content %}
@@ -330,7 +334,7 @@
 								$(this).removeClass('image-checkbox-checked');
 							}
 						});
-				
+
 						$(".image-checkbox").on("click", function (e) {
 							if ($(this).hasClass('image-checkbox-checked')) {
 								$(this).removeClass('image-checkbox-checked');
@@ -340,7 +344,7 @@
 								$(this).addClass('image-checkbox-checked');
 								$(this).find('input[type="checkbox"]').first().attr("checked", "checked");
 							}
-				
+
 							e.preventDefault();
 						});
 					});
@@ -354,7 +358,7 @@
 								$(this).removeClass('button-filter-checked');
 							}
 						});
-				
+
 						$(".button-filter").on("click", function (c) {
 							if ($(this).hasClass('button-filter-checked')) {
 								$(this).removeClass('button-filter-checked');
@@ -364,10 +368,9 @@
 								$(this).addClass('button-filter-checked');
 								$(this).find('input[type="checkbox"]').first().attr("checked", "checked");
 							}
-				
+
 							c.preventDefault();
 						});
 					});
 				</script>
 				{% endblock %}
-				
