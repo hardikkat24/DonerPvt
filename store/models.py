@@ -90,20 +90,23 @@ CUT_CHOICES = [
 SYM_CHOICES = [
 	('X', 'EX'),
 	('VG', 'VG'),
-	('G','GD'),
+	('G', 'GD'),
 	('F', 'FR'),
 ]
 POL_CHOICES = [
 	('EX', 'EX'),
 	('VG', 'VG'),
-	('G','GD'),
+	('G', 'GD'),
 	('F', 'FR'),
 ]
 
 class Customer(models.Model):
 	user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-	name = models.CharField(max_length=200, null=False, blank = False)
+	fname = models.CharField(max_length=200, null=False, blank = False)
+	lname = models.CharField(max_length=200, null=False, blank = False)
 	company_name = models.CharField(max_length=200, null=False, blank = False)
+	email = models.EmailField(max_length=100,null=False, blank=False, default='Spl@ymail.com')
+	
 
 	def __str__(self):
 		return self.user.username
@@ -234,11 +237,8 @@ class OrderItem(models.Model):
 class ShippingAddress(models.Model):
 	customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
 	order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
-	address = models.CharField(max_length=200, null=False)
-	city = models.CharField(max_length=200, null=False)
-	state = models.CharField(max_length=200, null=False)
-	zipcode = models.CharField(max_length=200, null=False)
-	country = models.CharField(max_length=200, null=False, default = "India", blank = False)
+	country = models.CharField(max_length=200, null=False)
+	state = models.CharField(max_length=100,null=False)
 	date_added = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):

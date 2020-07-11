@@ -7,8 +7,9 @@
         <div class="col-120">
     <form method="POST">
       {% csrf_token %}
-        {{ form.as_p }}
-        {{ form1.as_p }}
+       {{ form1.as_p }}
+       {{ form.as_p }}
+
       <button type="submit" class="btn btn-success">Register</button>
     </form>
   

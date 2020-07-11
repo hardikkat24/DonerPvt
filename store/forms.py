@@ -13,7 +13,7 @@ class LoginForm(forms.Form):
            }
        ))
    password = forms.CharField(
-       label="password",
+       label="Password ",
        widget=forms.PasswordInput(
            attrs={
                "class": "form-control"
@@ -31,21 +31,21 @@ class SignUpForm(UserCreationForm):
            }
        ))
    email = forms.EmailField(
-       label="Email ",
+       label="Email",
        widget=forms.EmailInput(
            attrs={
                "class": "form-control"
            }
        ))
    password1 = forms.CharField(
-       label="password",
+       label="Password",
        widget=forms.PasswordInput(
            attrs={
                "class": "form-control"
            }
        ))
    password2 = forms.CharField(
-       label="re-enter your password",
+       label="Re-enter your Password",
        widget=forms.PasswordInput(
            attrs={
                "class": "form-control"
@@ -57,8 +57,17 @@ class SignUpForm(UserCreationForm):
        fields = ('username', 'email', 'password1', 'password2')
 
 
-class CustomerSignUpForm(forms.ModelForm):
-  name = forms.CharField(
+class CustomerSignUpForm (forms.ModelForm):
+  fname = forms.CharField(
+      label="First Name",
+      widget=forms.TextInput(
+           attrs={
+               "class": "form-control"
+           })
+    )
+
+  lname = forms.CharField(
+      label="Last Name",
       widget=forms.TextInput(
            attrs={
                "class": "form-control"
@@ -74,7 +83,7 @@ class CustomerSignUpForm(forms.ModelForm):
 
   class Meta:
     model = Customer
-    fields = ('name', 'company_name')
+    fields = ('fname', 'lname', 'company_name')
 
 
 class ShippingAddressForm(forms.ModelForm):
