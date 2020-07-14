@@ -246,7 +246,7 @@ def addImageUpdate(request, pk):
 
 		if request.method == "POST":
 			print('post yes')
-			form = ProductUpdateForm(request.POST or None, instance = product)
+			form = ProductUpdateForm(request.POST or None, request.FILES, instance = product)
 			if form.is_valid():
 				form.save()
 				return redirect('add_image')
