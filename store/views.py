@@ -190,12 +190,19 @@ def register_user(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
         form1 = CustomerSignUpForm(request.POST)
+        form2 = ShippingAddressForm(request.POST)
 
         if form.is_valid() and form1.is_valid():
             user = form.save()
+
             customer = form1.save(commit = False)
             customer.user = user
             customer.save()
+
+            address = form2.save(commit = False)
+            address.customer = user.customer
+            address.save()
+
             username = form.cleaned_data.get("username")
             raw_password = form.cleaned_data.get("password1")
             user = authenticate(username=username, password=raw_password)
@@ -203,7 +210,8 @@ def register_user(request):
     else:
         form = SignUpForm()
         form1 = CustomerSignUpForm()
-    return render(request, "store/register.html", {"form": form, 'form1':form1})
+        form2 = ShippingAddressForm()
+    return render(request, "store/register.html", {"form": form, 'form1':form1, 'form2': form2})
 
 
 def about(request):

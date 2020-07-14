@@ -87,6 +87,22 @@ class CustomerSignUpForm (forms.ModelForm):
 
 
 class ShippingAddressForm(forms.ModelForm):
+  country = forms.CharField(
+      label="Country",
+      widget=forms.TextInput(
+           attrs={
+               "class": "form-control"
+           })
+    )
+
+  state = forms.CharField(
+      label="State",
+      widget=forms.TextInput(
+           attrs={
+               "class": "form-control"
+           })
+    )
+
   class Meta:
     model = ShippingAddress
     exclude =['customer', 'order']
