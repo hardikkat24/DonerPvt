@@ -8,7 +8,7 @@ class ProductResource(resources.ModelResource):
 
 	class Meta:
 		model = Product
-		exclude = ('name', 'ordered', 'pseudo_shape', 'image', 'certificate', 'video')
+		exclude = ('name', 'ordered', 'pseudo_shape', 'image')
 		import_id_fields = ['lot_no',]
 
 

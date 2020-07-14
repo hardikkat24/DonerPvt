@@ -143,9 +143,9 @@ class Product(models.Model):
 	rap = models.FloatField(null = True, blank = True)
 	price = models.FloatField(null = True, blank = True)
 	image = models.ImageField(null = True, blank = True, upload_to = "images/")
-	certificate = models.ImageField(null = True, blank = True, upload_to = "certificates/")
+	certificate = models.URLField(null = True, blank = True)
 	ordered = models.BooleanField(default = False)
-	video = models.FileField(null = True, blank = True, upload_to = "videos/")
+	video = models.URLField(null = True, blank = True, default = "")
 
 
 
@@ -169,7 +169,7 @@ class Product(models.Model):
 	@property
 	def certificateURL(self):
 		try:
-			url = self.certificate.url
+			url = self.certificate
 		except:
 			url = ''
 		return url
@@ -177,7 +177,7 @@ class Product(models.Model):
 	@property
 	def videoURL(self):
 		try:
-			url = self.video.url
+			url = self.video
 		except:
 			url = ''
 		return url
