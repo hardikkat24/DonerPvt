@@ -142,10 +142,10 @@ class Product(models.Model):
 	certno = models.CharField(max_length = 40, null = True, blank = True, default = "-")
 	rap = models.FloatField(null = True, blank = True)
 	price = models.FloatField(null = True, blank = True)
-	image = models.URLField(null = True, blank = True)
-	certificate = models.URLField(null = True, blank = True)
+	image = models.ImageField(null = True, blank = True, upload_to = "images/")
+	certificate = models.ImageField(null = True, blank = True, upload_to = "certificates/")
 	ordered = models.BooleanField(default = False)
-	video = models.URLField(null = True, blank = True, default = '')
+	video = models.FileField(null = True, blank = True, upload_to = "videos/")
 
 
 
