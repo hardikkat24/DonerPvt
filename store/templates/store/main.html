@@ -82,7 +82,7 @@
 					<li><a href="{% url 'cart' %}"><span class="ico-products"></span>{{cartItems}}</a></li>
 					<li><span class="ico-account"></span>   
 					{% if request.user.is_authenticated %}
-					<a  class="nav">Welcome, {{request.user}}</a></li>
+					<a href = "{% url 'update' %}" class="nav">Welcome, {{request.user}}</a></li>
 					<li><a href="{% url 'logout' %}?next=/"><span class="ico-signout"></span>Sign out</a></li>
 					{% else %}
 					<a href="{% url 'login' %}?" class="ico-account">Login</a></li>

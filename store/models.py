@@ -243,10 +243,10 @@ class OrderItem(models.Model):
 		return total
 
 class ShippingAddress(models.Model):
-	customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-	country = models.CharField(max_length=200, null=False)
-	state = models.CharField(max_length=100,null=False)
+	customer = models.OneToOneField(Customer, on_delete=models.SET_NULL, null=True)
+	country = models.CharField(max_length=200, null=True, blank = True)
+	state = models.CharField(max_length=100,null=True, blank = True)
 	date_added = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
-		return self.state + ", " + self.country
+		return str(self.date_added)

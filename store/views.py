@@ -38,8 +38,7 @@ def add(request, pk):
 	if not orderitemcreated:
 		messages.info(request, '<p style="color: Red">Item already in cart!</p>')
 
-	print(request.path_info)
-	return HttpResponseRedirect(request.path_info)
+	return redirect('search')
 
 @login_required
 def add2(request, pk):
@@ -56,6 +55,27 @@ def remove(request, pk):
 	orderitem.delete()
 
 	return redirect('cart')
+
+@login_required
+def update(request):
+
+	add, _ = ShippingAddress.objects.get_or_create(customer = request.user.customer)
+	print(add)
+
+	if request.method == "POST":
+		form = ShippingAddressForm(request.POST, instance = add)
+		if form.is_valid():
+			form.save()
+
+	else:
+		form = ShippingAddressForm(instance = add)
+
+	context = {
+		'form': form
+	}
+
+	return render(request, "store/update.html", context)
+
 
 @login_required
 def view(request, pk):
