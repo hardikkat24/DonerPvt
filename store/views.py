@@ -37,7 +37,9 @@ def add(request, pk):
 	orderitem, orderitemcreated = OrderItem.objects.get_or_create(product = product, order = order)
 	if not orderitemcreated:
 		messages.info(request, '<p style="color: Red">Item already in cart!</p>')
-	return HttpResponseRedirect(self.request.path_info)
+
+	print(request.path_info)
+	return HttpResponseRedirect(request.path_info)
 
 @login_required
 def add2(request, pk):
@@ -100,43 +102,21 @@ def cart(request):
 
 
 @login_required
-def checkout(request):
-	data = cartData(request)
+def place_order(request):
+	order = Order.objects.get(customer = request.user.customer, complete = False)
 
-	cartItems = data['cartItems']
-	order = data['order']
-	items = data['items']
+	if order.orderitem_set.count() > 0:
+		order.complete = True
+		order.save()
+		sendMail(request, order)
 
-	if request.method == "POST":
-		form = ShippingAddressForm(request.POST)
-		if form.is_valid():
-			ins = form.save(commit = False)
-			order1 = Order.objects.get(customer = request.user.customer, complete = False)
+		for orderitem in order.orderitem_set.all():
+			orderitem.product.stone -= orderitem.quantity
+			if orderitem.product.stone <= 0:
+				orderitem.product.ordered = True
+			orderitem.product.save()
+		return redirect('success')
 
-			if order1.orderitem_set.count() > 0:
-				order1.complete = True
-				order1.save()
-				ins.order = order1
-				ins.customer = request.user.customer
-				ins.save()
-				sendMail(request, order1)
-
-				for orderitem in order.orderitem_set.all():
-					orderitem.product.stone -= orderitem.quantity
-					if orderitem.product.stone <= 0:
-						orderitem.product.ordered = True
-					orderitem.product.save()
-				return redirect('success')
-			else:
-				messages.info(request, "No items in cart!")
-			form = ShippingAddressForm()
-
-	else:
-		form = ShippingAddressForm()
-
-
-	context = {'items':items, 'order':order, 'cartItems':cartItems, 'form': form}
-	return render(request, 'store/checkout.html', context)
 
 @login_required
 def search(request):
@@ -327,6 +307,47 @@ def updateItem(request):
 		)
 
 	return JsonResponse('Payment submitted..', safe=False)
+
+
+
+@login_required
+def checkout(request):
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+
+	if request.method == "POST":
+		form = ShippingAddressForm(request.POST)
+		if form.is_valid():
+			ins = form.save(commit = False)
+			order1 = Order.objects.get(customer = request.user.customer, complete = False)
+
+			if order1.orderitem_set.count() > 0:
+				order1.complete = True
+				order1.save()
+				ins.order = order1
+				ins.customer = request.user.customer
+				ins.save()
+				sendMail(request, order1)
+
+				for orderitem in order.orderitem_set.all():
+					orderitem.product.stone -= orderitem.quantity
+					if orderitem.product.stone <= 0:
+						orderitem.product.ordered = True
+					orderitem.product.save()
+				return redirect('success')
+			else:
+				messages.info(request, "No items in cart!")
+			form = ShippingAddressForm()
+
+	else:
+		form = ShippingAddressForm()
+
+
+	context = {'items':items, 'order':order, 'cartItems':cartItems, 'form': form}
+	return render(request, 'store/checkout.html', context)
 
 
 <!-<tr><td style="white-space:nowrap;font-family:'trebuchet ms','helvetica',sans-serif;font-size:13px" valign="top" align="left">&lt;&lt; doner diamonds png&gt;&gt;</td></tr>-!>
