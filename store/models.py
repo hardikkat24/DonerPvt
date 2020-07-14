@@ -161,7 +161,7 @@ class Product(models.Model):
 	@property
 	def imageURL(self):
 		try:
-			url = self.image
+			url = self.image.url
 		except:
 			url = ''
 		return url
@@ -169,7 +169,15 @@ class Product(models.Model):
 	@property
 	def certificateURL(self):
 		try:
-			url = self.certificate
+			url = self.certificate.url
+		except:
+			url = ''
+		return url
+
+	@property
+	def videoURL(self):
+		try:
+			url = self.video.url
 		except:
 			url = ''
 		return url
