@@ -14,6 +14,7 @@ urlpatterns = [
 	path('cart/', views.cart, name="cart"),
 	# path('checkout/', views.checkout, name="checkout"),
 	path('place-order/', views.place_order, name="place-order"),
+	path('enquiry/', views.enquiry, name="enquiry"),
 	path('search/', views.search, name="search"),
 	path('login/', login_view, name="login"),
    	path('register/', register_user, name="register"),

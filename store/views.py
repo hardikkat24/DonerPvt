@@ -139,6 +139,18 @@ def place_order(request):
 
 
 @login_required
+def enquiry(request):
+	order = Order.objects.get(customer = request.user.customer, complete = False)
+
+	if order.orderitem_set.count() > 0:
+		sendMail(request, order)
+		
+	messages.success(request, "Please check your registered mail id for information.")
+
+	return redirect('cart')
+
+
+@login_required
 def search(request):
 	data = cartData(request)
 
