@@ -250,3 +250,14 @@ class ShippingAddress(models.Model):
 
 	def __str__(self):
 		return str(self.date_added)
+
+
+class Jewellery(models.Model):
+	image = models.ImageField(null = True, blank = True, upload_to = "jewellery/")
+	desc = models.TextField(null = True, blank = True)
+
+	def __str__(self):
+		return str(self.id)
+
+	class Meta:
+		verbose_name_plural = "Jewellery"

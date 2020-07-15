@@ -1,0 +1,108 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+    <style>
+      .clear{
+    clear: both;
+}
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
+}
+
+.middle{
+    margin: 0 auto;
+}
+
+body{
+    text-align: center;
+    color: black;
+    font-family: 'Roboto';
+}
+
+.heading{
+    margin-top: 4vh;
+    font-size: 3em;
+    color: white;
+    width: 100%;
+    font-weight: 600;
+}
+
+.content{
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+
+.score .heading, .timer .heading{
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.grid-container{
+    margin: 0 5vw;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    grid-column-gap: 3vw;
+    grid-row-gap: 8vh;
+    max-width: 100%;
+    align-content: center;
+    margin-bottom: 2vh;
+}
+
+.box{
+    overflow: hidden;
+}
+
+.img-holder{
+    position: relative;
+}
+
+.image{
+    width: 100%;
+    z-index: 0;
+}
+
+
+
+
+
+@media only screen and (max-width: 768px){
+
+
+.grid-container{
+    grid-template-columns: auto auto;
+    margin: 0;
+    padding: 0;
+    grid-column-gap: 20vw;
+}
+}
+    </style>
+    <body>
+      <div class = "content">
+
+        
+        <div class = "grid-container">
+            {% for item in all_items %}
+            <div class = "box">
+                <div class = "img-holder">
+                    <img src = "{{ item.image.url }}" class = 'image'>
+                    
+                </div>
+                <div>{{ item.desc }}</div>
+            </div>
+            {% endfor %}
+            
+
+            
+        </div>
+
+      
+    </div>
+    
+{% endblock %}

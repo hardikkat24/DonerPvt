@@ -26,4 +26,5 @@ urlpatterns = [
 	path('success/', views.successfulOrder, name="success"),
 	path('addImage/', views.addImage, name='add_image'),
 	path('addImageUpdate/<str:pk>', views.addImageUpdate, name='add_image_update'),
+	path('jewellery/', views.jewellery, name = "jewellery"),
 ]

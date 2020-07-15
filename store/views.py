@@ -285,6 +285,15 @@ def addImageUpdate(request, pk):
 		return redirect('store')
 
 
+def jewellery(request):
+	all_items = Jewellery.objects.all()
+	context = {
+		"all_items": all_items
+	}
+
+	return render(request, "store/jewellery.html", context)
+
+
 """
 def updateItem(request):
 	data = json.loads(request.body)
