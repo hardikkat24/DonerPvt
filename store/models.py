@@ -105,7 +105,9 @@ class Customer(models.Model):
 	fname = models.CharField(max_length=200, null=False, blank = False)
 	lname = models.CharField(max_length=200, null=False, blank = False)
 	company_name = models.CharField(max_length=200, null=False, blank = False)
-	email = models.EmailField(max_length=100,null=False, blank=False, default='Spl@ymail.com')
+	email = models.EmailField(max_length=100,null=False, blank=False, default='Spl@ymail.com')	
+	mobile_no = models.CharField(max_length = 15, null = True, blank = True)
+
 	
 
 	def __str__(self):
@@ -146,7 +148,6 @@ class Product(models.Model):
 	certificate = models.URLField(null = True, blank = True)
 	ordered = models.BooleanField(default = False)
 	video = models.URLField(null = True, blank = True, default = "")
-
 
 
 

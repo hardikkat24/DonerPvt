@@ -81,9 +81,16 @@ class CustomerSignUpForm (forms.ModelForm):
            })
     )
 
+  mobile_no = forms.CharField(
+      widget=forms.TextInput(
+           attrs={
+               "class": "form-control"
+           })
+    )
+
   class Meta:
     model = Customer
-    fields = ('fname', 'lname', 'company_name')
+    fields = ('fname', 'lname', 'company_name', 'mobile_no')
 
 
 class ShippingAddressForm(forms.ModelForm):
