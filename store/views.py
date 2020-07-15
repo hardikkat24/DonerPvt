@@ -3,7 +3,7 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import *
-from .utils import cookieCart, cartData, guestOrder, sendMail
+from .utils import cookieCart, cartData, guestOrder, sendMail, sendEnquiryMail
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -143,7 +143,7 @@ def enquiry(request):
 	order = Order.objects.get(customer = request.user.customer, complete = False)
 
 	if order.orderitem_set.count() > 0:
-		sendMail(request, order)
+		sendEnquiryMail(request, order)
 		
 	messages.success(request, "Please check your registered mail id for information.")
 

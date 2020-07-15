@@ -135,6 +135,40 @@ def sendMail(request, order):
 	email.send()
 	print("Sent")
 
+
+def sendEnquiryMail(request, order):
+	current_site = get_current_site(request)
+	mail_subject = "Your Enquiry"
+	totalcarat = grandtotal = 0
+
+	for orderitem in order.orderitem_set.all():
+		totalcarat += orderitem.product.carat*orderitem.quantity
+		grandtotal += orderitem.product.price*orderitem.quantity
+
+	grandtotal += SHIPPING_CHARGES
+
+	message = render_to_string('store/customer_email.html',{
+			'user': request.user,
+			'datetime': datetime.datetime.now(pytz.timezone('Asia/Kolkata')),
+			'order': order,
+			'totalcarat': totalcarat,
+			'grandtotal': grandtotal,
+			'shipping_charges': SHIPPING_CHARGES,
+			'request': request,
+		})
+
+
+	to_email = request.user.email
+
+	email = EmailMessage(
+			mail_subject, message, to = [to_email, OWNER_MAIL]
+		)
+	# email.attach(plain_message, "text/html")
+	email.content_subtype = "html"
+	# email.attach_file('static/images/Transparent-small.png')
+	email.send()
+	print("Sent")
+
 """
 For getting choices while productions
 
