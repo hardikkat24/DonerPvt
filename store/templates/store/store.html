@@ -30,12 +30,14 @@
 					<section class="products">
 						{% for product in products %}
 						{% if product.imageURL != "" %}
+						{% if not product.ordered %}
 						<article>
 							<img src="{{product.imageURL}}" alt="">
 							<h3>{{product.lot_no}}</h3>
 							<h4>${{product.price}}</h4>
 							<a class="btn btn-outline-secondary add-btn update-cart" href = "{% url 'add2' product.pk %}">Add to cart</a>
 						</article>
+						{% endif %}
 						{% endif %}
 						{% endfor %}
 					</section>

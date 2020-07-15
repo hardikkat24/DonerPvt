@@ -229,6 +229,7 @@
 
 						<tbody>
 						{% for product in products %}
+						{% if not product.ordered %}
 						<tr>
 							<td><h3></h3>{{product.lot_no}}</h3></td>
 							<td>{{product.get_pseudo_shape_display }}</td>
@@ -254,6 +255,7 @@
 							<a href = "{% url 'add' product.pk %}">Add to cart</a>
 							</td>
 						</tr>
+						{% endif %}
 					{% endfor %}
 
 						</tbody>
