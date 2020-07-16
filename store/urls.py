@@ -27,4 +27,6 @@ urlpatterns = [
 	path('addImage/', views.addImage, name='add_image'),
 	path('addImageUpdate/<str:pk>', views.addImageUpdate, name='add_image_update'),
 	path('jewellery/', views.jewellery, name = "jewellery"),
+
+	path('ajax/enquiry/', views.ajax_enquiry, name = "ajax-enquiry"),
 ]

@@ -205,6 +205,7 @@
 					<table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="font-size: 12px;">
 						<thead>
 						<tr>
+							<th>Select</th>
 							<th>Lot_no</th>
 							<th>Shape</th>
 							<th>Carat</th>
@@ -231,6 +232,7 @@
 						{% for product in products %}
 						{% if not product.ordered %}
 						<tr>
+							<td><input type="checkbox" name="product" value="{{ product.pk }}" class = "product-cbox"/></td>
 							<td><h3></h3>{{product.lot_no}}</h3></td>
 							<td>{{product.get_pseudo_shape_display }}</td>
 							<td>{{product.carat}}</td>
@@ -260,6 +262,8 @@
 
 						</tbody>
 					</table>
+					<a id = "enquiry-btn" style="margin:5px;" class="btn-grey">Enquiry</a>
+					<a id = "cart-btn" style="margin:5px;" class="btn-grey">Cart</a>
 				</div>
 			</div>
 	</div>
@@ -322,6 +326,50 @@
 
 				{% block javascript %}
 				<script type="text/javascript">
+
+					$(document).ready(function() {
+
+						var arr = []
+
+						var event_handler = function(){
+							console.log("clicked")
+							console.log( $(this).prop('checked') )
+							if ( $(this).prop('checked') )
+							{
+								arr.push( $(this).val() )
+								console.log("add " + $(this).val())
+							}
+							else 
+							{
+								let index = arr.indexOf($(this).val())
+								if (index > -1)
+								{
+									arr.splice(index, 1);
+									console.log("remove " + $(this).val())
+								}
+						}
+
+						
+					}
+
+					$(document).on('click', '.product-cbox', event_handler)
+
+					$('#enquiry-btn').click(function(){
+
+							let myurl = "/ajax/enquiry/";
+							console.log(arr)
+							
+							$.ajax({
+								type: "POST",
+								url : myurl,
+								data : {"products": JSON.stringify(arr)},
+								dataType: 'json'
+							})
+							
+						})
+					});
+
+
 					jQuery(function ($) {
 						$(".image-checkbox").each(function () {
 							if ($(this).find('input[type="checkbox"]').first().attr("checked")) {

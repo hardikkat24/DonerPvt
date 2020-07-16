@@ -14,6 +14,7 @@ from .filters import ProductFilter
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 
 def store(request):
 	"""
@@ -292,6 +293,33 @@ def jewellery(request):
 	}
 
 	return render(request, "store/jewellery.html", context)
+
+
+@csrf_exempt
+def ajax_enquiry(request):
+	data = request.POST.get("products", None)
+
+	print(data)
+	data = json.loads(data)
+	print(data)
+	products = Product.objects.filter(lot_no__in = data)
+	order = Order(customer = request.user.customer)
+	order.save()
+
+	for product in products:
+		orderitem = OrderItem(product = product, order = order)
+		orderitem.save()
+
+	if order.orderitem_set.count() > 0:
+		sendEnquiryMail(request, order)
+
+	order.delete()
+		
+	messages.success(request, "Please check your registered mail id for information.")
+
+
+
+	return JsonResponse(data, safe = False)
 
 
 """
