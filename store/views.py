@@ -322,6 +322,37 @@ def ajax_enquiry(request):
 	return JsonResponse(data, safe = False)
 
 
+@csrf_exempt
+def ajax_cart(request):
+	data = request.POST.get("products", None)
+	messages = []
+
+	print(data)
+	data = json.loads(data)
+	print(data)
+	products = Product.objects.filter(lot_no__in = data)
+
+	order, created = Order.objects.get_or_create(customer = request.user.customer, complete = False)
+
+	for product in products:
+		orderitem, orderitemcreated = OrderItem.objects.get_or_create(product = product, order = order)
+
+		if not orderitemcreated:
+			messages.append(str(product) +' already in cart!')
+
+
+		
+	messages.append("Successfully Added to cart!")
+
+	data = {
+		'messages': messages
+	}
+
+
+
+	return JsonResponse(data, safe = False)
+
+
 """
 def updateItem(request):
 	data = json.loads(request.body)

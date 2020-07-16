@@ -367,7 +367,33 @@
 							})
 							
 						})
+
+					$('#cart-btn').click(function(){
+
+							let myurl = "/ajax/cart/";
+							console.log(arr)
+							
+							$.ajax({
+								type: "POST",
+								url : myurl,
+								data : {"products": JSON.stringify(arr)},
+								dataType: 'json',
+								success: function(data){
+									console.log(data.messages)
+									for (message of data.messages){
+										alert(message)
+									}
+								}
+							})
+							
+						})
+
 					});
+
+					
+
+					
+
 
 
 					jQuery(function ($) {

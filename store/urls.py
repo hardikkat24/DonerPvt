@@ -29,4 +29,5 @@ urlpatterns = [
 	path('jewellery/', views.jewellery, name = "jewellery"),
 
 	path('ajax/enquiry/', views.ajax_enquiry, name = "ajax-enquiry"),
+	path('ajax/cart/', views.ajax_cart, name = "ajax-cart"),
 ]
