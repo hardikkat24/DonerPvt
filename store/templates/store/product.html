@@ -53,11 +53,8 @@
 						</div>
 					
 						<div class="actions">
-							<form method="POST">
-								{% csrf_token %}
-								{{ form.as_p }}
-								<button type="submit" class="btn-grey">Add to Cart</button>
-							</form>
+								<a type="submit" class="btn-grey" href = "{% url 'add-product' product.pk %}">Add to Cart</a>
+							
 						</div>
 					</div>
 				</div>

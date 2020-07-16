@@ -50,6 +50,17 @@ def add2(request, pk):
          messages.info(request, 'Item already in cart!')
     return redirect('store')
 
+
+@login_required
+def add_product(request, pk):
+    product = Product.objects.get(pk = pk)
+    order, created = Order.objects.get_or_create(customer = request.user.customer, complete = False)
+    orderitem, orderitemcreated = OrderItem.objects.get_or_create(product = product, order = order)
+    if not orderitemcreated:
+         messages.info(request, 'Item already in cart!')
+    return redirect('view', pk = pk)
+
+
 @login_required
 def remove(request, pk):
 	orderitem = OrderItem.objects.get(pk = pk)
@@ -81,19 +92,7 @@ def update(request):
 @login_required
 def view(request, pk):
 	product = Product.objects.filter(lot_no__exact = pk).first()
-	if request.method == "POST":
-		form = QuantityForm(request.POST)
-		if form.is_valid():
-			quantity = form.cleaned_data.get('quantity')
-			order, created = Order.objects.get_or_create(customer = request.user.customer, complete = False)
-			orderitem, orderitemcreated = OrderItem.objects.get_or_create(product = product, order = order)
-
-			orderitem.quantity = quantity
-			if orderitem.quantity > orderitem.product.stone:
-				orderitem.quantity = orderitem.product.stone
-				messages.info(request, 'Only '+ str(orderitem.product.stone) + "piece(s) left !" )
-
-			orderitem.save()
+	
 
 
 
@@ -105,7 +104,6 @@ def view(request, pk):
 	context = {
 	'product': product,
 	'cartItems':cartItems,
-	'form': form,
 	}
 	return render(request, "store/product.html", context)
 
